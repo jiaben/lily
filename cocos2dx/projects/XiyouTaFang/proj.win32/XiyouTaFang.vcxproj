@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{4E6A7A0E-DDD8-4BAA-8B22-C964069364ED}</ProjectGuid>
+    <ProjectGuid>{B71E0FFC-FD51-450B-8FF9-C21BC73248EB}</ProjectGuid>
     <ProjectName>XiyouTaFang</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -103,7 +103,7 @@
       </DllDataFileName>
     </Midl>
     <PreBuildEvent>
-      <Command>xcopy "$(ProjectDir)..\..\..\scripting\lua\script" "$(ProjectDir)..\Resources" /e /Y</Command>
+      <Command>xcopy "$(ProjectDir)..\..\..\scripting\lua\script" "$(ProjectDir)..\Resources\script" /e /Y</Command>
       <Message>
       </Message>
     </PreBuildEvent>

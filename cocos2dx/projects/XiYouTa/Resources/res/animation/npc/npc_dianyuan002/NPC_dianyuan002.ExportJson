@@ -1,0 +1,1326 @@
+{
+  "armature_data": [
+    {
+      "strVersion": "1.0.0.1",
+      "version": 1.001,
+      "name": "NPC_dianyuan002",
+      "bone_data": [
+        {
+          "name": "zhixin01",
+          "parent": "",
+          "x": -4.00001859664917,
+          "y": -144.12669372558594,
+          "z": 10,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": 0.0,
+          "kY": 0.0,
+          "arrow_x": 1.1801719665527344E-05,
+          "arrow_y": -4.7238663682946935E-06,
+          "effectbyskeleton": true
+        },
+        {
+          "name": "zhixin02",
+          "parent": "zhixin01",
+          "x": 3.0000002384185791,
+          "y": 62.999984741210938,
+          "z": 11,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": 4.092863E-18,
+          "kY": -4.092863E-18,
+          "arrow_x": 1.2159347534179688E-05,
+          "arrow_y": 3.3303895179415122E-05,
+          "effectbyskeleton": true
+        },
+        {
+          "name": "shenti",
+          "parent": "zhixin02",
+          "x": -1.0000002384185791,
+          "y": 8.0,
+          "z": 4,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": -1.55661285,
+          "kY": 1.55661285,
+          "arrow_x": 141.01423645019531,
+          "arrow_y": 7.4419239126655157E-07,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "NPC_dianyuan002.psd_Psd.Dir/shenti.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 36.93956,
+                  "y": 4.524369,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.55661285,
+                  "kY": -1.55661285
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "tou",
+          "parent": "shenti",
+          "x": 139.00032043457031,
+          "y": 0.97153830528259277,
+          "z": 9,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": -0.0141835213,
+          "kY": 0.0141835213,
+          "arrow_x": 112.00004577636719,
+          "arrow_y": -5.1748197620327119E-06,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "NPC_dianyuan002.psd_Psd.Dir/tou2.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 63.9999466,
+                  "y": -3.00000572,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.57079637,
+                  "kY": -1.57079637
+                }
+              ]
+            },
+            {
+              "name": "NPC_dianyuan002.psd_Psd.Dir/tou1.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 76.99995,
+                  "y": -24.0000114,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.57079637,
+                  "kY": -1.57079637
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "zuobi02",
+          "parent": "shenti",
+          "x": 152.66560363769531,
+          "y": -45.839385986328125,
+          "z": 7,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": 2.608263,
+          "kY": -2.608263,
+          "arrow_x": 80.622604370117188,
+          "arrow_y": 6.2333601817954332E-05,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "NPC_dianyuan002.psd_Psd.Dir/shoubi2.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 49.3659,
+                  "y": 1.73641968,
+                  "cX": 1.00000012,
+                  "cY": 1.00000012,
+                  "kX": -1.05165064,
+                  "kY": 1.05164969
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "zuobi01",
+          "parent": "zuobi02",
+          "x": 73.924758911132812,
+          "y": 0.37209224700927734,
+          "z": 8,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": 0.399242163,
+          "kY": -0.399242163,
+          "arrow_x": 83.600227355957031,
+          "arrow_y": 4.2418581870151684E-05,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "NPC_dianyuan002.psd_Psd.Dir/shou2.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 42.5358124,
+                  "y": 1.92578888,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": -1.45089233,
+                  "kY": 1.45089173
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "youbi02",
+          "parent": "shenti",
+          "x": 151.31822204589844,
+          "y": 49.151107788085938,
+          "z": 5,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": 3.59719181,
+          "kY": -3.59719181,
+          "arrow_x": 72.89715576171875,
+          "arrow_y": -2.9183564038248733E-05,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "NPC_dianyuan002.psd_Psd.Dir/shoubi1.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 46.97034,
+                  "y": -1.94790649,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 4.24260664,
+                  "kY": 2.04058027
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "youbi01",
+          "parent": "youbi02",
+          "x": 66.2165756225586,
+          "y": -4.5132036209106445,
+          "z": 6,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": -0.48183012,
+          "kY": 0.48183012,
+          "arrow_x": 83.005996704101562,
+          "arrow_y": 9.1626716312021017E-06,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "NPC_dianyuan002.psd_Psd.Dir/shou1.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 43.9607353,
+                  "y": -3.52985382,
+                  "cX": 1.00000012,
+                  "cY": 1.00000012,
+                  "kX": -1.5587486,
+                  "kY": 1.5587492
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "weiba",
+          "parent": "zhixin02",
+          "x": 41.000003814697266,
+          "y": 2.0,
+          "z": 1,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": -0.5642682,
+          "kY": 0.5642682,
+          "arrow_x": 93.493377685546875,
+          "arrow_y": 1.9757533664233051E-05,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "NPC_dianyuan002.psd_Psd.Dir/weiba.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 50.8271751,
+                  "y": 9.251999,
+                  "cX": 1.00000012,
+                  "cY": 1.00000012,
+                  "kX": 0.564268231,
+                  "kY": -0.5642672
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "zuotui",
+          "parent": "zhixin01",
+          "x": 44.000003814697266,
+          "y": 69.999984741210938,
+          "z": 3,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": 1.76819193,
+          "kY": -1.76819193,
+          "arrow_x": 71.38623046875,
+          "arrow_y": 1.7335019947495311E-05,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "NPC_dianyuan002.psd_Psd.Dir/tui1.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 34.5164261,
+                  "y": 0.78445816,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 4.514993,
+                  "kY": 1.76819313
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "youtui",
+          "parent": "zhixin01",
+          "x": -34.000003814697266,
+          "y": 72.999992370605469,
+          "z": 2,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": 1.45700431,
+          "kY": -1.45700431,
+          "arrow_x": 70.455657958984375,
+          "arrow_y": 9.2488915015565E-07,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "NPC_dianyuan002.psd_Psd.Dir/tui2.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 33.24077,
+                  "y": 0.227092743,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": -1.45700443,
+                  "kY": 1.45700264
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "animation_data": [
+    {
+      "name": "NPC_dianyuan002",
+      "mov_data": [
+        {
+          "name": "stand",
+          "dr": 50,
+          "lp": true,
+          "to": 0,
+          "drTW": 0,
+          "twE": 0,
+          "sc": 1.0,
+          "mov_bone_data": [
+            {
+              "name": "zhixin02",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": -1,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": -1,
+                  "x": 0.0,
+                  "y": -2.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": -7.30752264E-17,
+                  "kY": 7.30752264E-17,
+                  "fi": 25,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": -1,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 50,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "zhixin01",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": -1,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": -1,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 50,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "tou",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": -2.8568572998046875,
+                  "y": -0.039728164672851562,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 25,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 50,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "zuobi01",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 50,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "zuobi02",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.09121433,
+                  "kY": -0.09121433,
+                  "fi": 25,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 50,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "youbi01",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 50,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "youbi02",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": -0.07424665,
+                  "kY": 0.07424665,
+                  "fi": 25,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 50,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "shenti",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.02,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 25,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 50,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "zuotui",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 50,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "youtui",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 50,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "weiba",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.466771752,
+                  "kY": -0.466771752,
+                  "fi": 25,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 50,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "suffer",
+          "dr": 50,
+          "lp": true,
+          "to": 0,
+          "drTW": 0,
+          "twE": 0,
+          "sc": 1.0,
+          "mov_bone_data": [
+            {
+              "name": "zhixin02",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": -1,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": -1,
+                  "x": 0.0,
+                  "y": -2.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": -7.30752264E-17,
+                  "kY": 7.30752264E-17,
+                  "fi": 25,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": -1,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 50,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "zhixin01",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": -1,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": -1,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 50,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "tou",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 6.00648E-17,
+                  "kY": -6.00648E-17,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 1,
+                  "x": -1.1427429914474487,
+                  "y": -0.015891266986727715,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 3.603888E-17,
+                  "kY": -3.603888E-17,
+                  "fi": 5,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 1,
+                  "x": -2.8568572998046875,
+                  "y": -0.039728164672851562,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 25,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 50,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "zuobi01",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 50,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "zuobi02",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": -0.09357377,
+                  "kY": 0.09357377,
+                  "fi": 10,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": -0.233934417,
+                  "kY": 0.233934417,
+                  "fi": 25,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 50,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "youbi01",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.18905288,
+                  "kY": -0.18905288,
+                  "fi": 25,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 50,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "youbi02",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.214842692,
+                  "kY": -0.214842692,
+                  "fi": 25,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 50,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "shenti",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.02,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 25,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 50,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "zuotui",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 50,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "youtui",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 50,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "weiba",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.466771752,
+                  "kY": -0.466771752,
+                  "fi": 25,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 50,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "texture_data": [
+    {
+      "name": "NPC_dianyuan002.psd_Psd.Dir/shenti",
+      "width": 94.0,
+      "height": 129.0,
+      "pX": 0.5,
+      "pY": 0.5
+    },
+    {
+      "name": "NPC_dianyuan002.psd_Psd.Dir/shou1",
+      "width": 16.5,
+      "height": 43.0,
+      "pX": 0.5,
+      "pY": 0.5
+    },
+    {
+      "name": "NPC_dianyuan002.psd_Psd.Dir/shou2",
+      "width": 19.0,
+      "height": 46.0,
+      "pX": 0.5,
+      "pY": 0.5
+    },
+    {
+      "name": "NPC_dianyuan002.psd_Psd.Dir/shoubi1",
+      "width": 23.5,
+      "height": 43.5,
+      "pX": 0.5,
+      "pY": 0.5
+    },
+    {
+      "name": "NPC_dianyuan002.psd_Psd.Dir/shoubi2",
+      "width": 22.5,
+      "height": 43.5,
+      "pX": 0.5,
+      "pY": 0.5
+    },
+    {
+      "name": "NPC_dianyuan002.psd_Psd.Dir/tou1",
+      "width": 96.0,
+      "height": 87.0,
+      "pX": 0.5,
+      "pY": 0.5
+    },
+    {
+      "name": "NPC_dianyuan002.psd_Psd.Dir/tui1",
+      "width": 23.0,
+      "height": 44.0,
+      "pX": 0.5,
+      "pY": 0.5
+    },
+    {
+      "name": "NPC_dianyuan002.psd_Psd.Dir/tui2",
+      "width": 23.5,
+      "height": 44.0,
+      "pX": 0.5,
+      "pY": 0.5
+    },
+    {
+      "name": "NPC_dianyuan002.psd_Psd.Dir/weiba",
+      "width": 40.5,
+      "height": 51.0,
+      "pX": 0.5,
+      "pY": 0.5
+    },
+    {
+      "name": "NPC_dianyuan002.psd_Psd.Dir/tou2",
+      "width": 69.5,
+      "height": 76.0,
+      "pX": 0.5,
+      "pY": 0.5
+    }
+  ],
+  "config_file_path": [
+    "NPC_dianyuan0020.plist"
+  ]
+}
