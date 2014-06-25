@@ -1,5 +1,6 @@
-require "AudioEngine" 
-require "Layers/LoginLayer"
+require "AudioEngine"
+require "Base.extern"
+require "Layers.LoginLayer"
 -- for CCLuaEngine traceback
 function __G__TRACKBACK__(msg)
     print("----------------------------------------")
