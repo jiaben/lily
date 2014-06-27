@@ -35,7 +35,9 @@ end
 
 function Hero:setDirection(d)
     if d then
-        self.ccSprite:setFlipX(true)
+        local scale = self.ccSprite:getScale()
+--        self.armature:getAnimation():setFlipX(true)
+        self.ccSprite:setScaleX(-1*scale)
     end
 end
 
@@ -62,7 +64,34 @@ function Hero:walk(road)
 end
 
 function Hero:run()
-    self.armature:getAnimation():play("run01")
+    local loop1 = math.ceil(math.random()*20)
+
+    local n = math.floor(math.random()*2)+1
+    self.armature:getAnimation():play(string.format("run%02d",n),-1,-1,loop1)
+    
+    local t1 = 0
+    
+    local function callback(armature,movementType,movementID)
+        local id = movementID
+        if movementType == ccs.MovementEventType.LOOP_COMPLETE then
+            if id == "run01" or id == "run02" then
+                t1 = t1 + 1
+                if t1 >= loop1 then
+                    local n = math.floor(math.random()*2)+1
+                    local loop2 = math.ceil(math.random()*20)
+                    armature:getAnimation():play(string.format("attack%02d",n),-1,-1,loop2)
+                end
+            elseif id == "attack02" or id == "attack01" then
+                armature:stopAllActions()
+                armature:getAnimation():play("die",-1,-1,1)
+            elseif id == "die" then
+            --    armature:getAnimation():stop()
+                armature:getAnimation():play("stand")
+                armature:getAnimation():setMovementEventCallFunc()
+            end
+        end
+    end
+    self.armature:getAnimation():setMovementEventCallFunc(callback)
 end
 
 function Hero:stand()

@@ -94,6 +94,13 @@ ccs.ListViewDirection = {
     horizontal = 2,
 }
 
+ccs.MovementEventType =
+{
+    START = 0,
+    COMPLETE = 1,
+    LOOP_COMPLETE = 2
+};
+
 cc = cc or {}
 cc.TEXT_ALIGNMENT_CENTER = 0x1
 cc.TEXT_ALIGNMENT_LEFT  = 0x0

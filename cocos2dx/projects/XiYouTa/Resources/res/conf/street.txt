@@ -1,9 +1,0 @@
-﻿编号	店名	路径	位置X	位置Y	店内场景	价格	功能	数值
-id	StoreName	Path	PosX	PosY	PathInhouse	Price	Effect	num
-2001	喵餐厅	StreetScene/Cantin.png	240	300	inhouseScene/taiqiuBg.png	100	liliang	2
-2002	喵台球	StreetScene/Taiqiutin.png	850	300	inhouseScene/taiqiuBg.png	100	jiqiao	2
-2003	喵KTV	StreetScene/Ktv.png	1340	300	inhouseScene/taiqiuBg.png	100	zhanhou	5
-2004	喵温泉	StreetScene/Wenquan.png	2100	310	inhouseScene/taiqiuBg.png	100	tipo	5
-2005	喵教堂	StreetScene/Jiaotang.png	2680	310	inhouseScene/BJjiaotang.png	0	wu	0
-2006	喵酒吧	StreetScene/Jiuba.png	3410	310	inhouseScene/taiqiuBg.png	100	douyi	2
-2007	喵健身	StreetScene/Jianshenfang.png	4070	310	inhouseScene/BJjianshen.png	100	minjie	2

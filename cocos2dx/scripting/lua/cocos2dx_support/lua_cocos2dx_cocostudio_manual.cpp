@@ -650,7 +650,6 @@ static int tolua_Cocos2dx_CCArmatureAnimation_setMovementEventCallFunc00(lua_Sta
     tolua_Error tolua_err;
     if (
         !tolua_isusertype(tolua_S,1,"CCArmatureAnimation",0,&tolua_err) ||
-        !toluafix_isfunction(tolua_S,2,"LUA_FUNCTION",0,&tolua_err) ||
         !tolua_isnoobj(tolua_S,3,&tolua_err)
         )
         goto tolua_lerror;
@@ -670,6 +669,11 @@ static int tolua_Cocos2dx_CCArmatureAnimation_setMovementEventCallFunc00(lua_Sta
         
         wrapper->autorelease();
         LUA_FUNCTION handler = (  toluafix_ref_function(tolua_S,2,0));
+        if (!handler)
+        {
+            self->setMovementEventCallFunc(NULL, NULL);
+            return 0;
+        }
         
         wrapper->setHandler(handler);
         
@@ -698,7 +702,6 @@ static int tolua_Cocos2dx_CCArmatureAnimation_setFrameEventCallFunc00(lua_State*
     tolua_Error tolua_err;
     if (
         !tolua_isusertype(tolua_S,1,"CCArmatureAnimation",0,&tolua_err) ||
-        !toluafix_isfunction(tolua_S,2,"LUA_FUNCTION",0,&tolua_err) ||
         !tolua_isnoobj(tolua_S,3,&tolua_err)
         )
         goto tolua_lerror;
@@ -709,6 +712,7 @@ static int tolua_Cocos2dx_CCArmatureAnimation_setFrameEventCallFunc00(lua_State*
 #ifndef TOLUA_RELEASE
         if (!self) tolua_error(tolua_S,"invalid 'self' in function 'setFrameEventCallFunc'", NULL);
 #endif
+        
         LuaArmatureWrapper* wrapper = new LuaArmatureWrapper();
         if (NULL == wrapper)
         {
@@ -718,6 +722,12 @@ static int tolua_Cocos2dx_CCArmatureAnimation_setFrameEventCallFunc00(lua_State*
         
         wrapper->autorelease();
         LUA_FUNCTION handler = (  toluafix_ref_function(tolua_S,2,0));
+        if (!handler)
+        {
+            self->setFrameEventCallFunc(NULL, NULL);
+            return 0;
+        }
+
         
         wrapper->setHandler(handler);
         
