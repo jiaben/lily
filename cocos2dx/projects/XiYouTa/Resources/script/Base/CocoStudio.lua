@@ -1,5 +1,5 @@
-require "json"
-require "extern"
+require "Base.json"
+require "Base.extern"
 
 function sendTriggerEvent(event)
     local triggerObjArr = TriggerMng.getInstance():get(event)

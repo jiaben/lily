@@ -3,10 +3,14 @@ echo _TARGET_BUILD_CONTENTS_PATH: $_TARGET_BUILD_CONTENTS_PATH
 echo PWD: $PWD
 echo Cleaning $_TARGET_BUILD_CONTENTS_PATH/
 
-rm -fr $_TARGET_BUILD_CONTENTS_PATH/script/*
-rm -fr $_TARGET_BUILD_CONTENTS_PATH/res/*
+rm -rf $_TARGET_BUILD_CONTENTS_PATH/script/*
 mkdir -p $_TARGET_BUILD_CONTENTS_PATH/script/
-mkdir -p $_TARGET_BUILD_CONTENTS_PATH/res/
 cp -RLp $PWD/../Resources/script/* $_TARGET_BUILD_CONTENTS_PATH/script/
 
+rm -rf $_TARGET_BUILD_CONTENTS_PATH/res/*
+mkdir -p $_TARGET_BUILD_CONTENTS_PATH/res/
 cp -RLp $PWD/../Resources/res/* $_TARGET_BUILD_CONTENTS_PATH/res/
+
+rm -rf $_TARGET_BUILD_CONTENTS_PATH/lang/*
+mkdir -p $_TARGET_BUILD_CONTENTS_PATH/lang/
+cp -RLp $PWD/../Resources/lang/* $_TARGET_BUILD_CONTENTS_PATH/lang/

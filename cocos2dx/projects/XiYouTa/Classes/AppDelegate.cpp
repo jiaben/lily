@@ -45,7 +45,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     tolua_s = pStack->getLuaState();
     tolua_web_socket_open(tolua_s);
 #endif
-    
+    CCEGLView::sharedOpenGLView()->setDesignResolutionSize(960, 640, kResolutionShowAll);
     CCFileUtils::sharedFileUtils()->addSearchPath("script");
     std::string path = CCFileUtils::sharedFileUtils()->fullPathForFilename("launch.lua");
     pEngine->executeScriptFile(path.c_str());
