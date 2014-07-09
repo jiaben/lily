@@ -67,39 +67,40 @@ function Hero:run()
     local loop1 = math.ceil(math.random()*20)
 
     local n = math.floor(math.random()*2)+1
-    self.armature:getAnimation():play(string.format("run%02d",n),-1,-1,loop1)
-    
-    local t1 = 0
-    
-    local function callback(armature,movementType,movementID)
-        local id = movementID
-        if movementType == ccs.MovementEventType.LOOP_COMPLETE then
-            if id == "run01" or id == "run02" then
-                t1 = t1 + 1
-                if t1 >= loop1 then
-                    local n = math.floor(math.random()*2)+1
-                    local loop2 = math.ceil(math.random()*20)
-                    armature:getAnimation():play(string.format("attack%02d",n),-1,-1,loop2)
-                end
-            elseif id == "attack02" or id == "attack01" then
-                armature:stopAllActions()
-                armature:getAnimation():play("die",-1,-1,1)
-            elseif id == "die" then
-            --    armature:getAnimation():stop()
-                armature:getAnimation():play("stand")
-                armature:getAnimation():setMovementEventCallFunc()
-            end
-        end
-    end
-    self.armature:getAnimation():setMovementEventCallFunc(callback)
+    self.armature:getAnimation():play(string.format("run%02d",n))
 end
 
 function Hero:stand()
-    self:playAnimation("stand", true)
+	self.armature:getAnimation():play("stand")
 end
 
 function Hero:attack()
-    self:playAnimation("attack")
+	local n = math.floor(math.random()*2)+1
+	local loop2 = math.ceil(math.random()*20)
+	self.armature:getAnimation():play(string.format("attack%02d",n),-1,-1,loop2)
+
+	local i = 0
+	local function callback(armature,movementType,movementID)
+        local id = movementID
+		if movementType == ccs.MovementEventType.LOOP_COMPLETE then
+			if id == "attack02" or id == "attack01" then
+				i = i + 1
+				armature:stopAllActions()
+				if i > 20 then
+					armature:getAnimation():play("die",-1,-1,1)
+				else
+					local n1 = math.floor(math.random()*2)+1
+					armature:getAnimation():play(string.format("attack%02d", n1),-1,-1,1)
+				end
+
+			elseif id == "die" then
+		--    armature:getAnimation():stop()
+				armature:getAnimation():play("stand")
+				armature:getAnimation():setMovementEventCallFunc()
+			end
+		end
+	end
+	self.armature:getAnimation():setMovementEventCallFunc(callback)
 end
 
 function Hero:doSkill(skillname)
