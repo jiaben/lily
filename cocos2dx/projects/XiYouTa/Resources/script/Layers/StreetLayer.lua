@@ -1,5 +1,6 @@
 require "Object.Hero"
 require "Logic.AI"
+require "Object.Tower"
 StreetLayer = class()
 
 function StreetLayer:scene()
@@ -36,41 +37,35 @@ function StreetLayer:init()
 end
 
 function StreetLayer:addTower()
-	local tower = CCSprite:create("res/StreetScene/Cantin.png")
-	tower:setPosition(2000,400)
-	self.bgLayer:addChild(tower, 2)
+	local tower = Tower.new("res/StreetScene/Cantin.png")
+--	local tower = CCSprite:create("res/StreetScene/Cantin.png")
+	tower:setPosition(ccp(2000,400))
+	self.bgLayer:addChild(tower:getSprite(), 2)
 	table.insert(self.tbl_Tower, tower)
 end
 
 function StreetLayer:addCharactor()
+	local wy = Hero.new("wuya_zhandou")
+	self.layer:addChild(wy:getSprite(),2)
+	wy:setPosition(ccp(400,400))
+	wy:setDirection(-1)
+	table.insert(self.tbl_Hero, wy)
+
     local jp = Hero.new("jiaopi")
     self.layer:addChild(jp:getSprite(),2)
-    jp:setPosition(ccp(300,200))
+    jp:setPosition(ccp(150,200))
     jp:setDirection(-1)
 	table.insert(self.tbl_Hero, jp)
 
     local dt = Hero.new("datian")
     self.layer:addChild(dt:getSprite(),2)
-    dt:setPosition(ccp(470,400))
+    dt:setPosition(ccp(230,400))
 	dt:setDirection(-1)
 	table.insert(self.tbl_Hero,dt)
 
     local hn = Hero.new("chenhaonan")
     self.layer:addChild(hn:getSprite(),2)
-    hn:setPosition(ccp(650,200))
+    hn:setPosition(ccp(320,200))
     hn:setDirection(-1)
 	table.insert(self.tbl_Hero, hn)
-
-	local wy = Hero.new("wuya_zhandou")
-	self.layer:addChild(wy:getSprite(),2)
-	wy:setPosition(ccp(800,400))
-	wy:setDirection(-1)
-	table.insert(self.tbl_Hero, wy)
-
-	local bp = Hero.new("baopi")
-	self.layer:addChild(bp:getSprite(),2)
-	bp:setPosition(ccp(100,400))
-	bp:setDirection(-1)
-	table.insert(self.tbl_Hero, bp)
-
 end

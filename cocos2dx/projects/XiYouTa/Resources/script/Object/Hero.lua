@@ -20,6 +20,10 @@ function Hero:getSprite()
     return self.ccSprite
 end
 
+function Hero:remove()
+	self.ccSprite:removeFromParent()
+end
+
 function Hero:getArmature()
     return self.armature
 end
@@ -34,7 +38,7 @@ function Hero:setPosition(p)
 end
 
 function Hero:setDirection(d)
-    if d then
+    if d == -1 then
         local scale = self.ccSprite:getScale()
 --        self.armature:getAnimation():setFlipX(true)
         self.ccSprite:setScaleX(-1*scale)
@@ -51,6 +55,10 @@ function Hero:playAnimation(aniName, isInfinit)
     else
         self.sprite:runAction(CCRepeatOnce:create(ani))
     end
+end
+
+function Hero:setMP(num)
+	self.MP = num
 end
 
 function Hero:walk(road)
@@ -70,37 +78,36 @@ function Hero:run()
     self.armature:getAnimation():play(string.format("run%02d",n))
 end
 
+function Hero:hurt()
+	self.armature:getAnimation():play("suffer")
+	self.MP = self.MP - 20
+end
+
+
 function Hero:stand()
 	self.armature:getAnimation():play("stand")
 end
 
 function Hero:attack()
+
 	local n = math.floor(math.random()*2)+1
-	local loop2 = math.ceil(math.random()*20)
-	self.armature:getAnimation():play(string.format("attack%02d",n),-1,-1,loop2)
+	self.armature:getAnimation():play(string.format("attack%02d",n),-1,-1,1)
 
 	local i = 0
-	local function callback(armature,movementType,movementID)
-        local id = movementID
-		if movementType == ccs.MovementEventType.LOOP_COMPLETE then
-			if id == "attack02" or id == "attack01" then
-				i = i + 1
-				armature:stopAllActions()
-				if i > 20 then
-					armature:getAnimation():play("die",-1,-1,1)
-				else
-					local n1 = math.floor(math.random()*2)+1
-					armature:getAnimation():play(string.format("attack%02d", n1),-1,-1,1)
-				end
+	local function callback_frame(armature,movementType,movementID)
+		local enemy = AI.getInstance().getEnemy()
+		enemy:hurt()
+	end
 
-			elseif id == "die" then
-		--    armature:getAnimation():stop()
-				armature:getAnimation():play("stand")
-				armature:getAnimation():setMovementEventCallFunc()
-			end
+	local function callback_move()
+		if movementType == ccs.MovementEventType.LOOP_COMPLETE then
+			armature:getAnimation():play("stand")
+			armature:getAnimation():setMovementEventCallFunc()
+			armature:getAnimation():setMovementEventCallFunc()
 		end
 	end
-	self.armature:getAnimation():setMovementEventCallFunc(callback)
+	self.armature:getAnimation():setFrameEventCallFunc(callback_frame)
+	self.armature:getAnimation():setMovementEventCallFunc(callback_move)
 end
 
 function Hero:doSkill(skillname)

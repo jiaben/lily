@@ -1,9 +1,0 @@
-﻿英文	中文
-key	val
-test	测试
-http_loading	正在连接服务器...
-http_failed	连接服务器失败！
-http_quit	退出
-http_retry	重试
-insert	插队
-rand	cc1111011

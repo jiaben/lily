@@ -40,8 +40,8 @@ end
 local function ai_callback()
     local self = AI:getInstance()
     if self.state == AI.state.normal then
-		self:_move()
 		self.state = AI.state.stand
+		self:_move()
 	elseif self.state == AI.state.stand then
     elseif self.state == AI.state.run then
         if not self:_encounter() then
@@ -95,8 +95,9 @@ function AI:_move()
 end
 
 function AI:_attack()
---
---	self.curTower:start()
+
+	self.curTower:alert()
+	self.curTower:createSoldier()
 	for i,v in pairs(self.tbl_Hero) do
 		v:attack()
 	end
@@ -121,7 +122,7 @@ end
 
 function AI:_encounter()
 	self.curTower = self.tbl_Tower[1]
-	local pTower = self.curTower:convertToWorldSpace(ccp(0,0))
+	local pTower = self.curTower:getSprite():convertToWorldSpace(ccp(0,0))
 	
 	self.firstHero = self.tbl_Hero[1]
 	local pHero = self.firstHero.ccSprite:convertToWorldSpace(ccp(0,0))
