@@ -1,4 +1,4 @@
-TowerBase = class()
+TowerBase = class("TowerBase")
 
 TowerBase.tblHeroMetaData = {}
 --[[

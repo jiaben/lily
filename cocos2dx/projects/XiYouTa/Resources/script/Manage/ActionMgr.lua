@@ -1,6 +1,6 @@
 require "Base.init"
-ActionMgr = class()
-ActionData = class()
+ActionMgr = class("ActionMgr")
+ActionData = class("ActionData")
 
 function ActionData:ctor(target, action)
 	self.target = target

@@ -1,5 +1,5 @@
 require "Object.HeroBase"
-Hero = class(Object)
+Hero = class("Hero",Object)
 
 function Hero:ctor(heroType)
 --    self._heroMeta = HeroBase:getData(heroType)
@@ -79,8 +79,8 @@ function Hero:run()
 end
 
 function Hero:hurt()
-	self.armature:getAnimation():play("suffer")
-	self.MP = self.MP - 20
+	self.armature:getAnimation():play("suffer",-1,-1,0)
+--	self.MP = self.MP - 20
 end
 
 
@@ -88,15 +88,20 @@ function Hero:stand()
 	self.armature:getAnimation():play("stand")
 end
 
+function Hero:setAttackEvent(e)
+	self.attackEvent = e
+end
+
 function Hero:attack()
 
 	local n = math.floor(math.random()*2)+1
-	self.armature:getAnimation():play(string.format("attack%02d",n),-1,-1,1)
+	self.armature:getAnimation():play(string.format("attack%02d",n),-1,-1,0)
 
 	local i = 0
 	local function callback_frame(armature,movementType,movementID)
-		local enemy = AI.getInstance().getEnemy()
+		local enemy = AI.getInstance():getEnemy()
 		enemy:hurt()
+		self.attackEvent:callback()
 	end
 
 	local function callback_move()

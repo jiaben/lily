@@ -1,5 +1,6 @@
 require "Base.extern"
-AI=class()
+require "Logic.AttackEvent"
+AI=class("AI")
 
 AI.state = {}
 AI.state["normal"] 		= 0
@@ -20,7 +21,7 @@ AI.camp["npc"] 			= 3
 function AI:ctor()
     self.tbl_Hero   	= StreetLayer.getInstance().tbl_Hero
     self.tbl_Tower  	= StreetLayer.getInstance().tbl_Tower
-	self.tbl_Enemy		= StreetLayer.getInstance().tbl_Enemy
+	self.tbl_Enemy		= {}
 	self.tbl_Soldier	= StreetLayer.getInstance().tbl_Soldier
     self.state 			= AI.state.normal
     AI.instance 		= self
@@ -99,8 +100,10 @@ function AI:_attack()
 	self.curTower:alert()
 	self.curTower:createSoldier()
 	for i,v in pairs(self.tbl_Hero) do
-		v:attack()
+		local event = AttackEvent.new(v)
+		EventManager.getInstance():pushEvent(event)
 	end
+	EventManager.getInstance():callEvent()
 end
 
 function AI:_update()
@@ -120,6 +123,10 @@ function AI:_update()
 --]]
 end
 
+function AI:getEnemy()
+	return self.tbl_Enemy[1]
+end
+
 function AI:_encounter()
 	self.curTower = self.tbl_Tower[1]
 	local pTower = self.curTower:getSprite():convertToWorldSpace(ccp(0,0))
@@ -131,6 +138,10 @@ function AI:_encounter()
 	StreetLayer.getInstance().bgLayer:runAction(CCMoveBy:create(1/30,ccp(-5,0)))
 	
 	return math.abs(pTower.x-pHero.x) < 200
+end
+
+function AI:CallNextEvent()
+	
 end
 
 function AI:_lose()

@@ -1,4 +1,4 @@
-Tower = class()
+Tower = class("Tower")
 
 function Tower:ctor(file)
 	self.ccSprite = CCSprite:create(file)
@@ -47,7 +47,7 @@ function Tower:createSoldier()
 			bp:setPosition(ccp(x-100*(loop+math.random()),100+440*math.random()))
 			bp:setDirection(0)
 			bp.ccSprite:setColor(ccc3(255,0,0))
-			table.insert(self.soldier, bp)
+			table.insert(AI.getInstance().tbl_Enemy, bp)
 		end
 		loop = loop + 1
 	end

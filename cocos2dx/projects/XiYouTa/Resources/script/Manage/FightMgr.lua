@@ -5,7 +5,7 @@ require "Object.Soldier"
 require "Object.Street"
 require "Layers.StreetLayer"
 
-FightMgr = class()
+FightMgr = class("FightMgr")
 
 function FightMgr:ctor()
 	self.tblFights = {}

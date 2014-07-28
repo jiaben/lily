@@ -1,4 +1,4 @@
-Object = class(nil)
+Object = class("Object")
 
 function Object:ctor()
 end

@@ -1,7 +1,7 @@
 require "Object.Hero"
 require "Logic.AI"
 require "Object.Tower"
-StreetLayer = class()
+StreetLayer = class("StreetLayer")
 
 function StreetLayer:scene()
     local street = StreetLayer:new()
