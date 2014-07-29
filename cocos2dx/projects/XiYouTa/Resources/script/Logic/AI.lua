@@ -106,6 +106,10 @@ function AI:_attack()
 	EventManager.getInstance():callEvent()
 end
 
+function AI:getCurrentTower()
+	return self.curTower
+end
+
 function AI:_update()
 --[[
 	if table.maxn(self.tbl_Hero) == 0 then
@@ -124,7 +128,17 @@ function AI:_update()
 end
 
 function AI:getEnemy()
-	return self.tbl_Enemy[1]
+	local len = #(self.tbl_Enemy)
+	local index = math.ceil(math.random()*len)
+	return self.tbl_Enemy[index]
+end
+
+function AI:removeEnemy(enemy)
+	for i,v in pairs(self.tbl_Enemy) do
+		if enemy == v then
+			table.remove(self.tbl_Enemy, i)
+		end
+	end
 end
 
 function AI:_encounter()

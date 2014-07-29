@@ -14,6 +14,7 @@ function Hero:ctor(heroType)
     self.ccSprite = CCSprite:create()
     self.ccSprite:addChild(self.armature)
     self.ccSprite:setScale(0.4)
+	self.MP = 120
 end
 
 function Hero:getSprite()
@@ -48,15 +49,6 @@ end
 function Hero:_loadResource()
 end
 
-function Hero:playAnimation(aniName, isInfinit)
-    local ani
-    if isInfinit then
-        self.sprite:runAction(CCRepeatForever:create(ani))
-    else
-        self.sprite:runAction(CCRepeatOnce:create(ani))
-    end
-end
-
 function Hero:setMP(num)
 	self.MP = num
 end
@@ -79,10 +71,39 @@ function Hero:run()
 end
 
 function Hero:hurt()
+	self.MP = self.MP - 20
+	if self.MP < 0 then
+		if self.isEnemy then
+			AI.getInstance():removeEnemy(self)
+		end
+		self:die()
+		return
+	end
+	local function callback_move(armature,movementType,movementID)
+		if movementType == ccs.MovementEventType.COMPLETE then
+			armature:getAnimation():setMovementEventCallFunc()
+			self.armature:getAnimation():play("stand")
+		end
+	end
+	self.armature:getAnimation():setMovementEventCallFunc(callback_move)
 	self.armature:getAnimation():play("suffer",-1,-1,0)
---	self.MP = self.MP - 20
 end
 
+function Hero:die()
+	local function callback_move(armature,movementType,movementID)
+		if movementType == ccs.MovementEventType.COMPLETE then
+			armature:getAnimation():setMovementEventCallFunc()
+			self:release()
+		end
+	end
+	self.armature:getAnimation():setMovementEventCallFunc(callback_move)
+	self.armature:getAnimation():play("die",-1,-1,0)
+end
+
+function Hero:release()
+	self.ccSprite:stopAllActions()
+	self.ccSprite:removeFromParentAndCleanup(true)
+end
 
 function Hero:stand()
 	self.armature:getAnimation():play("stand")
@@ -100,19 +121,22 @@ function Hero:attack()
 	local i = 0
 	local function callback_frame(armature,movementType,movementID)
 		local enemy = AI.getInstance():getEnemy()
-		enemy:hurt()
+		local tower =  AI.getInstance():getCurrentTower()
+		if enemy then
+			self.armature:getAnimation():setFrameEventCallFunc()
+			enemy:hurt()
+		elseif tower:isAlive() then
+			tower:hurt()
+		else
+			self.armature:getAnimation():play("shengli")
+			return
+		end
+		local event = AttackEvent.new(self)
+		EventManager.getInstance():pushEvent(event)
 		self.attackEvent:callback()
 	end
 
-	local function callback_move()
-		if movementType == ccs.MovementEventType.LOOP_COMPLETE then
-			armature:getAnimation():play("stand")
-			armature:getAnimation():setMovementEventCallFunc()
-			armature:getAnimation():setMovementEventCallFunc()
-		end
-	end
 	self.armature:getAnimation():setFrameEventCallFunc(callback_frame)
-	self.armature:getAnimation():setMovementEventCallFunc(callback_move)
 end
 
 function Hero:doSkill(skillname)

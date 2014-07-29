@@ -380,7 +380,8 @@ void CCArmatureAnimation::update(float dt)
         m_sFrameEventQueue.pop();
 
         m_bIgnoreFrameEvent = true;
-        (m_sFrameEventTarget->*m_sFrameEventCallFunc)(event->bone, event->frameEventName, event->originFrameIndex, event->currentFrameIndex);
+		if (m_sFrameEventCallFunc)
+			(m_sFrameEventTarget->*m_sFrameEventCallFunc)(event->bone, event->frameEventName, event->originFrameIndex, event->currentFrameIndex);
         m_bIgnoreFrameEvent = false;
 
         CC_SAFE_DELETE(event);
@@ -390,8 +391,8 @@ void CCArmatureAnimation::update(float dt)
     {
         CCMovementEvent *event = m_sMovementEventQueue.front();
         m_sMovementEventQueue.pop();
-
-        (m_sMovementEventTarget->*m_sMovementEventCallFunc)(event->armature, event->movementType, event->movementID);
+		if (m_sMovementEventCallFunc)
+	        (m_sMovementEventTarget->*m_sMovementEventCallFunc)(event->armature, event->movementType, event->movementID);
 
         CC_SAFE_DELETE(event);
     }

@@ -5,6 +5,7 @@ function Tower:ctor(file)
 	self.soldierLoop = 0
 	self.alertLoop = 0
 	self.soldier = {}
+	self.MP = 3000
 end
 
 function Tower:alert()
@@ -34,6 +35,15 @@ function Tower:setPosition(p)
 	self.ccSprite:setPosition(p)
 end
 
+function Tower:isAlive()
+	print("tower", self.MP)
+	return self.MP > 0
+end
+
+function Tower:hurt()
+	self.MP = self.MP - 20
+end
+
 function Tower:createSoldier()
 	local x,y = self.ccSprite:getPosition()
 	print(x,y)
@@ -42,6 +52,7 @@ function Tower:createSoldier()
 	local function callback()
 		for i = 1,4 do
 			local bp = Hero.new("baopi")
+			bp.isEnemy = true
 			bp:stand()
 			parent:addChild(bp:getSprite(),2)
 			bp:setPosition(ccp(x-100*(loop+math.random()),100+440*math.random()))
