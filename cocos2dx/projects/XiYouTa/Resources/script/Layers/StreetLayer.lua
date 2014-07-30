@@ -37,11 +37,21 @@ function StreetLayer:init()
 end
 
 function StreetLayer:addTower()
-	local tower = Tower.new("res/StreetScene/Cantin.png")
---	local tower = CCSprite:create("res/StreetScene/Cantin.png")
-	tower:setPosition(ccp(2000,400))
-	self.bgLayer:addChild(tower:getSprite(), 2)
-	table.insert(self.tbl_Tower, tower)
+	local tower1 = Tower.new("res/StreetScene/Jiaotang.png")
+	tower1:setPosition(ccp(1500,400))
+	self.bgLayer:addChild(tower1:getSprite(), 2)
+	table.insert(self.tbl_Tower, tower1)
+	
+	local tower2 = Tower.new("res/StreetScene/Huisuo.png")
+	tower2:setPosition(ccp(2500,400))
+	self.bgLayer:addChild(tower2:getSprite(), 2)
+	table.insert(self.tbl_Tower, tower2)
+	
+	local tower3 = Tower.new("res/StreetScene/Cantin.png")
+	tower3:setPosition(ccp(4000,400))
+	self.bgLayer:addChild(tower3:getSprite(), 2)
+	table.insert(self.tbl_Tower, tower3)
+
 end
 
 function StreetLayer:addCharactor()

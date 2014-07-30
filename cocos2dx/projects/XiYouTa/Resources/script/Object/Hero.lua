@@ -120,15 +120,15 @@ function Hero:attack()
 
 	local i = 0
 	local function callback_frame(armature,movementType,movementID)
+		self.armature:getAnimation():setFrameEventCallFunc()
 		local enemy = AI.getInstance():getEnemy()
 		local tower =  AI.getInstance():getCurrentTower()
 		if enemy then
-			self.armature:getAnimation():setFrameEventCallFunc()
 			enemy:hurt()
 		elseif tower:isAlive() then
 			tower:hurt()
 		else
-			self.armature:getAnimation():play("shengli")
+			self.armature:getAnimation():play("stand")
 			return
 		end
 		local event = AttackEvent.new(self)
@@ -141,4 +141,8 @@ end
 
 function Hero:doSkill(skillname)
     self:playAnimation(skillname)
+end
+
+function Hero:win()
+	self.armature:getAnimation():play("shengli")
 end

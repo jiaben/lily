@@ -11,10 +11,7 @@ end
 function Tower:alert()
 	local function callback()
 		self.alertLoop = self.alertLoop + 1
-		if self.alertLoop > 5 then
-			self.ccSprite:setColor(ccc3(255,255,255))
-			self.ccSprite:stopAction(self.alert_action)
-		elseif self.alertLoop % 2 == 1 then
+		if self.alertLoop % 2 == 1 then
 			self.ccSprite:setColor(ccc3(255,0,0))
 		else
 			self.ccSprite:setColor(ccc3(255,255,255))
@@ -36,12 +33,23 @@ function Tower:setPosition(p)
 end
 
 function Tower:isAlive()
-	print("tower", self.MP)
 	return self.MP > 0
 end
 
 function Tower:hurt()
-	self.MP = self.MP - 20
+	self.MP = self.MP - 40
+	if self.MP <= 0 then
+		if self.alert_action then
+			self.ccSprite:stopAction(self.alert_action)
+			self.alert_action = nil
+		end
+		self.ccSprite:stopAction(self.createSoldier_action)
+		self.ccSprite:setColor(ccc3(0,255,0))
+		return
+	end
+	if not self.alert_action then
+		self:alert()
+	end
 end
 
 function Tower:createSoldier()
@@ -61,6 +69,11 @@ function Tower:createSoldier()
 			table.insert(AI.getInstance().tbl_Enemy, bp)
 		end
 		loop = loop + 1
+		self.ccSprite:setColor(ccc3(255,255,255))
+		if self.alert_action then
+			self.ccSprite:stopAction(self.alert_action)
+			self.alert_action = nil
+		end
 	end
 	callback()
 	

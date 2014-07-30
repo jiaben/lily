@@ -57,7 +57,7 @@ local function ai_callback()
     elseif self.state == AI.state.lose then
         self:stop()
     elseif self.state == AI.state.win then
-        self:stop()
+        self:win()
     else
         error("IN AI: undefined AI status")
     end
@@ -96,8 +96,6 @@ function AI:_move()
 end
 
 function AI:_attack()
-
-	self.curTower:alert()
 	self.curTower:createSoldier()
 	for i,v in pairs(self.tbl_Hero) do
 		local event = AttackEvent.new(v)
@@ -125,6 +123,15 @@ function AI:_update()
 	
 	end
 --]]
+	local tower = self.curTower
+	if not tower:isAlive() then
+		table.remove(self.tbl_Tower,1)
+		if #(self.tbl_Tower) > 0 then
+			self.state = AI.state.normal
+		else
+			self.state = AI.state.win
+		end
+	end
 end
 
 function AI:getEnemy()
@@ -156,6 +163,13 @@ end
 
 function AI:CallNextEvent()
 	
+end
+
+function AI:win()
+	for i,v in pairs(self.tbl_Hero) do
+		v:win()
+	end
+	self:stop()
 end
 
 function AI:_lose()
