@@ -2504,6 +2504,7 @@
 					"$(SRCROOT)/../../cocos2dx/include",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PROVISIONING_PROFILE = "4906CBC7-E267-480A-BFB0-E4546D9DC62E";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2512,7 +2513,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: 37ren Development";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					NDEBUG,
@@ -2537,6 +2538,7 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "4906CBC7-E267-480A-BFB0-E4546D9DC62E";
 				SDKROOT = iphoneos;
 			};
 			name = Release;

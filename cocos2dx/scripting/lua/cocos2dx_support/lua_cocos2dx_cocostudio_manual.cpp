@@ -666,7 +666,7 @@ static int tolua_Cocos2dx_CCArmatureAnimation_setMovementEventCallFunc00(lua_Sta
             tolua_error(tolua_S,"LuaArmatureWrapper create fail\n", NULL);
             return 0;
         }
-        
+		
         wrapper->autorelease();
         LUA_FUNCTION handler = (  toluafix_ref_function(tolua_S,2,0));
         if (!handler)
@@ -674,18 +674,18 @@ static int tolua_Cocos2dx_CCArmatureAnimation_setMovementEventCallFunc00(lua_Sta
             self->setMovementEventCallFunc(NULL, NULL);
             return 0;
         }
-        
+		
         wrapper->setHandler(handler);
-        
+		
         CCDictionary* dict = static_cast<CCDictionary*>(self->getScriptObjectDict());
         if (NULL == self->getScriptObjectDict())
         {
             dict = CCDictionary::create();
             self->setScriptObjectDict(dict);
         }
-        
+		
         dict->setObject(wrapper, "moveEvent");
-        
+		
         self->setMovementEventCallFunc(wrapper, movementEvent_selector(LuaArmatureWrapper::movementEventCallback));
     }
     return 0;
@@ -712,14 +712,14 @@ static int tolua_Cocos2dx_CCArmatureAnimation_setFrameEventCallFunc00(lua_State*
 #ifndef TOLUA_RELEASE
         if (!self) tolua_error(tolua_S,"invalid 'self' in function 'setFrameEventCallFunc'", NULL);
 #endif
-        
+		
         LuaArmatureWrapper* wrapper = new LuaArmatureWrapper();
         if (NULL == wrapper)
         {
             tolua_error(tolua_S,"LuaArmatureWrapper create fail\n", NULL);
             return 0;
         }
-        
+		
         wrapper->autorelease();
         LUA_FUNCTION handler = (  toluafix_ref_function(tolua_S,2,0));
         if (!handler)
@@ -727,19 +727,19 @@ static int tolua_Cocos2dx_CCArmatureAnimation_setFrameEventCallFunc00(lua_State*
             self->setFrameEventCallFunc(NULL, NULL);
             return 0;
         }
-
-        
+		
+		
         wrapper->setHandler(handler);
-        
+		
         CCDictionary* dict = static_cast<CCDictionary*>(self->getScriptObjectDict());
         if (NULL == self->getScriptObjectDict())
         {
             dict = CCDictionary::create();
             self->setScriptObjectDict(dict);
         }
-        
+		
         dict->setObject(wrapper, "frameEvent");
-        
+		
         self->setFrameEventCallFunc(wrapper, frameEvent_selector(LuaArmatureWrapper::frameEventCallback));
     }
     return 0;
