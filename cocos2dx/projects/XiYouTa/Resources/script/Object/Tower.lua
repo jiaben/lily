@@ -20,6 +20,19 @@ function Tower:alert()
 	self.alert_action = schedule(self.ccSprite, callback, 0.5)
 end
 
+function Tower:win()
+	if self.alert_action then
+		self.ccSprite:stopAction(self.alert_action)
+		self.alert_action = nil
+	end
+	
+	if self.createSoldier_action then
+		self.ccSprite:stopAction(self.createSoldier_action)
+		self.createSoldier_action = nil
+	end
+	self.ccSprite:setColor(ccc3(0,0,255))
+end
+
 function Tower:getSprite()
 	return self.ccSprite
 end
@@ -60,6 +73,7 @@ function Tower:createSoldier()
 	local function callback()
 		for i = 1,4 do
 			local bp = Soldier.new("baopi")
+			bp:setMP(80)
 			bp.isEnemy = true
 			bp:stand()
 			parent:addChild(bp:getSprite(),2)

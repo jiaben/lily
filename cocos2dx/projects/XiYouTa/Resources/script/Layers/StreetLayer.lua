@@ -57,24 +57,28 @@ end
 
 function StreetLayer:addCharactor()
 	local wy = Hero.new("wuya_zhandou")
+	wy:setMP(200)
 	self.layer:addChild(wy:getSprite(),2)
 	wy:setPosition(ccp(400,400))
 	wy:setDirection(-1)
 	table.insert(self.tbl_Hero, wy)
 
     local jp = Hero.new("jiaopi")
+	jp:setMP(240)
     self.layer:addChild(jp:getSprite(),2)
     jp:setPosition(ccp(150,200))
     jp:setDirection(-1)
 	table.insert(self.tbl_Hero, jp)
 
     local dt = Hero.new("datian")
+	dt:setMP(120)
     self.layer:addChild(dt:getSprite(),2)
     dt:setPosition(ccp(230,400))
 	dt:setDirection(-1)
 	table.insert(self.tbl_Hero,dt)
 
     local hn = Hero.new("chenhaonan")
+	hn:setMP(480)
     self.layer:addChild(hn:getSprite(),2)
     hn:setPosition(ccp(320,200))
     hn:setDirection(-1)

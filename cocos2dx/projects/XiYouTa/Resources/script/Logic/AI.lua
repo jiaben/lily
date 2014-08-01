@@ -57,7 +57,7 @@ local function ai_callback()
     elseif self.state == AI.state.attack then
 		self:_update()
     elseif self.state == AI.state.lose then
-        self:stop()
+        self:_lose()
     elseif self.state == AI.state.win then
         self:win()
     else
@@ -115,22 +115,9 @@ function AI:getCurrentTower()
 end
 
 function AI:_update()
---[[
 	if table.maxn(self.tbl_Hero) == 0 then
         self.state = AI.state.lose
-	elseif self.curTower:getMP() == 0 then
-		table.remove(self.tbl_Tower,1)
-		if table.maxn(self.tbl_Tower) == 0 then
-			self.state = AI.state.win
-		else
-			self.state = AI.state.run
-		end
-	else
-	
-	end
---]]
-	local tower = self.curTower
-	if not tower:isAlive() then
+	elseif not self.curTower:isAlive() then
 		table.remove(self.tbl_Tower,1)
 		if #(self.tbl_Tower) > 0 then
 			self.state = AI.state.normal
@@ -216,6 +203,11 @@ function AI:win()
 end
 
 function AI:_lose()
+	self.curTower:win()
+	for i,v in pairs(self.tbl_Enemy) do
+		v:win()
+	end
+	self:stop()
 end
 
 function AI:_KO()

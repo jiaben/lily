@@ -14,7 +14,6 @@ function Soldier:ctor(soldierType)
     self.ccSprite = CCSprite:create()
     self.ccSprite:addChild(self.armature)
     self.ccSprite:setScale(0.4)
-	self.MP = 80
     self.alive = true
 end
 

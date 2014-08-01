@@ -14,7 +14,6 @@ function Hero:ctor(heroType)
     self.ccSprite = CCSprite:create()
     self.ccSprite:addChild(self.armature)
     self.ccSprite:setScale(0.4)
-	self.MP = 120
     self.alive = true
 end
 
