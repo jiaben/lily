@@ -59,7 +59,7 @@ function Tower:createSoldier()
 	local loop = 1
 	local function callback()
 		for i = 1,4 do
-			local bp = Hero.new("baopi")
+			local bp = Soldier.new("baopi")
 			bp.isEnemy = true
 			bp:stand()
 			parent:addChild(bp:getSprite(),2)
@@ -67,6 +67,7 @@ function Tower:createSoldier()
 			bp:setDirection(0)
 			bp.ccSprite:setColor(ccc3(255,0,0))
 			table.insert(AI.getInstance().tbl_Enemy, bp)
+            table.insert(AI.getInstance().tbl_Soldier, bp)
 		end
 		loop = loop + 1
 		self.ccSprite:setColor(ccc3(255,255,255))

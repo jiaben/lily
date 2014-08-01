@@ -13,7 +13,19 @@ SoldierBase.tblHeroMetaData = {}
  [{},{}]
  --]]
 
+g_tblSoldier = {"baopi", "jiaopi", "datian", "chenhaonan", "wuya_zhandou"}
+
 function SoldierBase:ctor()
+    self.soldier = {}
+    for i, v in pairs(g_tblSoldier) do
+        local path = string.format("res/animation/zhujv_%s/zhujv_%s.ExportJson", v, v)
+        CCArmatureDataManager:sharedArmatureDataManager():addArmatureFileInfo(path)
+        self.soldier[v] = true
+    end
+end
+
+function SoldierBase:isExistSoldier(name)
+    return self.soldier[name]
 end
 
 function SoldierBase:setData(name,tbl)
@@ -26,3 +38,5 @@ end
 function SoldierBase:getData(name)
     return SoldierBase.tblHeroMetaData[name]
 end
+
+g_SoldierBase = g_SoldierBase or SoldierBase.new()

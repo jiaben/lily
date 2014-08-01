@@ -2203,7 +2203,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = /Volumes/Soft/proj/lily/cocos2dx/projects/XiYouTa/CopyScript.sh;
+			shellScript = ../CopyScript.sh;
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -1,4 +1,5 @@
 require "Object.Hero"
+require "Object.Soldier"
 require "Logic.AI"
 require "Object.Tower"
 StreetLayer = class("StreetLayer")

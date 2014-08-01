@@ -15,6 +15,7 @@ function Hero:ctor(heroType)
     self.ccSprite:addChild(self.armature)
     self.ccSprite:setScale(0.4)
 	self.MP = 120
+    self.alive = true
 end
 
 function Hero:getSprite()
@@ -73,9 +74,7 @@ end
 function Hero:hurt()
 	self.MP = self.MP - 20
 	if self.MP < 0 then
-		if self.isEnemy then
-			AI.getInstance():removeEnemy(self)
-		end
+        AI.getInstance():removeHero(self)
 		self:die()
 		return
 	end
@@ -90,19 +89,29 @@ function Hero:hurt()
 end
 
 function Hero:die()
+    self.alive = false
 	local function callback_move(armature,movementType,movementID)
 		if movementType == ccs.MovementEventType.COMPLETE then
 			armature:getAnimation():setMovementEventCallFunc()
-			self:release()
+			self:onDie()
 		end
 	end
 	self.armature:getAnimation():setMovementEventCallFunc(callback_move)
 	self.armature:getAnimation():play("die",-1,-1,0)
 end
 
-function Hero:release()
+function Hero:onDie()
 	self.ccSprite:stopAllActions()
+    self.ccSprite:setVisible(false)
+    local event = DeadEvent.new(self)
+    EventManager.getInstance():pushEvent(event)
+--    self.attackEvent:callback()
+end
+
+function Hero:dead()
+    AI.getInstance():removeDeadObject(self)
 	self.ccSprite:removeFromParentAndCleanup(true)
+    self.attackEvent:callback()
 end
 
 function Hero:stand()
@@ -114,7 +123,11 @@ function Hero:setAttackEvent(e)
 end
 
 function Hero:attack()
-
+    if self.alive == false then
+        print(" hero dead")
+        self.attackEvent:callback()
+        return
+    end
 	local n = math.floor(math.random()*2)+1
 	self.armature:getAnimation():play(string.format("attack%02d",n),-1,-1,0)
 
@@ -131,7 +144,7 @@ function Hero:attack()
 			self.armature:getAnimation():play("stand")
 			return
 		end
-		local event = AttackEvent.new(self)
+        local event = AttackEvent.new(self)
 		EventManager.getInstance():pushEvent(event)
 		self.attackEvent:callback()
 	end

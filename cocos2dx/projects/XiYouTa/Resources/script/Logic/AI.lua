@@ -1,5 +1,6 @@
 require "Base.extern"
 require "Logic.AttackEvent"
+require "Logic.DeadEvent"
 AI=class("AI")
 
 AI.state = {}
@@ -23,6 +24,7 @@ function AI:ctor()
     self.tbl_Tower  	= StreetLayer.getInstance().tbl_Tower
 	self.tbl_Enemy		= {}
 	self.tbl_Soldier	= StreetLayer.getInstance().tbl_Soldier
+    self.tbl_deadObj    = {}
     self.state 			= AI.state.normal
     AI.instance 		= self
 end
@@ -96,8 +98,12 @@ function AI:_move()
 end
 
 function AI:_attack()
-	self.curTower:createSoldier()
+    self.curTower:createSoldier()
 	for i,v in pairs(self.tbl_Hero) do
+		local event = AttackEvent.new(v)
+		EventManager.getInstance():pushEvent(event)
+	end
+    for i,v in pairs(self.tbl_Soldier) do
 		local event = AttackEvent.new(v)
 		EventManager.getInstance():pushEvent(event)
 	end
@@ -140,10 +146,47 @@ function AI:getEnemy()
 	return self.tbl_Enemy[index]
 end
 
+function AI:getHero()
+	local len = #(self.tbl_Hero)
+	local index = math.ceil(math.random()*len)
+	return self.tbl_Hero[index]
+end
+
 function AI:removeEnemy(enemy)
 	for i,v in pairs(self.tbl_Enemy) do
 		if enemy == v then
 			table.remove(self.tbl_Enemy, i)
+            break
+		end
+	end
+    table.insert(self.tbl_deadObj,enemy)
+end
+
+function AI:removeSoldier(soldier)
+    for i,v in pairs(self.tbl_Soldier) do
+		if soldier == v then
+			table.remove(self.tbl_Soldier, i)
+            break
+		end
+	end
+end
+
+function AI:removeHero(hero)
+    for i,v in pairs(self.tbl_Hero) do
+		if hero == v then
+			table.remove(self.tbl_Hero, i)
+            break
+		end
+	end
+    table.insert(self.tbl_deadObj,enemy)
+end
+
+function AI:removeDeadObject(hero)
+    for i,v in pairs(self.tbl_deadObj) do
+		if hero == v then
+			table.remove(self.tbl_deadObj, i)
+            print("remove dead obj*****")
+            break
 		end
 	end
 end
