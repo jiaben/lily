@@ -73,7 +73,6 @@ end
 function Hero:hurt()
 	self.MP = self.MP - 20
 	if self.MP < 0 then
-        AI.getInstance():removeHero(self)
 		self:die()
 		return
 	end
@@ -92,14 +91,19 @@ function Hero:die()
 	local function callback_move(armature,movementType,movementID)
 		if movementType == ccs.MovementEventType.COMPLETE then
 			armature:getAnimation():setMovementEventCallFunc()
-			self:onDie()
+			self:onDieCallBack()
 		end
 	end
 	self.armature:getAnimation():setMovementEventCallFunc(callback_move)
 	self.armature:getAnimation():play("die",-1,-1,0)
+    self:onDie()
 end
 
 function Hero:onDie()
+    AI.getInstance():removeHero(self)
+end
+
+function Hero:onDieCallBack()
 	self.ccSprite:stopAllActions()
     self.ccSprite:setVisible(false)
     local event = DeadEvent.new(self)
