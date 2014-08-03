@@ -49,7 +49,6 @@ bool AppDelegate::applicationDidFinishLaunching()
     CCFileUtils::sharedFileUtils()->addSearchPath("script");
     std::string path = CCFileUtils::sharedFileUtils()->fullPathForFilename("launch.lua");
     pEngine->executeScriptFile(path.c_str());
-
     return true;
 }
 

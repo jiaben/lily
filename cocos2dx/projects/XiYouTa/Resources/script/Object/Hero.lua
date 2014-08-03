@@ -15,6 +15,27 @@ function Hero:ctor(heroType)
     self.ccSprite:addChild(self.armature)
     self.ccSprite:setScale(0.4)
     self.alive = true
+
+	local progressSprite = CCSprite:create("res/ui/blue.png",CCRectMake(0,0,200,20))
+--	progressSprite:setColor(ccc3(0,100,0))
+	self.progress = CCProgressTimer:create(progressSprite)
+	self.progress:setType(kCCProgressTimerTypeBar)
+	self.progress:setMidpoint(ccp(0,1))
+	self.progress:setBarChangeRate(ccp(0,1))
+--	progressSprite:setAnchorPoint(ccp(0,0))
+
+	self.progressBg = CCSprite:create("res/ui/word_cell.png",CCRectMake(0,0,200,20))
+	self.progressBg:addChild(self.progress)
+
+--	self.progress:setPosition(self.progressBg:getPosition())
+	self.progress:setPercentage(100)
+	
+	self.ccSprite:addChild(self.progressBg)
+	self.progressBg:setPosition(ccp(0,300))
+	self.label_name = CCLabelTTF:create("", "Arial", 40)
+	self.label_name:setString(heroType)
+	self.label_name:setPosition(ccp(0,50))
+	self.progressBg:addChild(self.label_name)
 end
 
 function Hero:getSprite()
@@ -34,7 +55,13 @@ function Hero:createArmature()
     self.armature = CCArmature:create(name)
 end
 
+function Hero:setName()
+	self.name = name
+	self.label_name:setString(name)
+end
+
 function Hero:setPosition(p)
+	
     self.ccSprite:setPosition(p)
 end
 
@@ -42,7 +69,7 @@ function Hero:setDirection(d)
     if d == -1 then
         local scale = self.ccSprite:getScale()
 --        self.armature:getAnimation():setFlipX(true)
-        self.ccSprite:setScaleX(-1*scale)
+        self.armature:setScaleX(-1)
     end
 end
 
@@ -50,6 +77,7 @@ function Hero:_loadResource()
 end
 
 function Hero:setMP(num)
+	self.MaxMP = num
 	self.MP = num
 end
 
@@ -77,6 +105,7 @@ function Hero:hurt()
 		self:die()
 		return
 	end
+	self.progress:setPercentage(self.MP/self.MaxMP*100)
 	local function callback_move(armature,movementType,movementID)
 		if movementType == ccs.MovementEventType.COMPLETE then
 			armature:getAnimation():setMovementEventCallFunc()
