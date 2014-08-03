@@ -5,7 +5,34 @@ function Tower:ctor(file)
 	self.soldierLoop = 0
 	self.alertLoop = 0
 	self.soldier = {}
+	self.Max_MP = 3000
 	self.MP = 3000
+	self.soldierIndex = 1
+
+	local progressSprite = CCSprite:create("res/ui/blue.png",CCRectMake(0,0,300,20))
+	--	progressSprite:setColor(ccc3(0,100,0))
+	self.progress = CCProgressTimer:create(progressSprite)
+	self.progress:setType(kCCProgressTimerTypeBar)
+	self.progress:setMidpoint(ccp(0,1))
+	self.progress:setBarChangeRate(ccp(1,0))
+	--	progressSprite:setAnchorPoint(ccp(0,0))
+
+	self.progressBg = CCSprite:create("res/ui/word_cell.png",CCRectMake(0,0,300,20))
+	self.progressBg:addChild(self.progress)
+	local szProgressBg = self.progressBg:getContentSize()
+	self.progress:setPosition(ccp(szProgressBg.width/2, szProgressBg.height/2))
+
+	self.progress:setPercentage(100)
+	local szHero = self.ccSprite:getContentSize()
+	self.ccSprite:addChild(self.progressBg)
+	
+	local szTower = self.ccSprite:getContentSize()
+	self.progressBg:setPosition(ccp(szTower.width/2,szTower.height/2+150))
+	self.label_name = CCLabelTTF:create("塔", "Arial", 40)
+	self.label_name:setPosition(ccp(100,50))
+	self.progressBg:addChild(self.label_name)
+	self.progressBg:setScaleY(0.4)
+	self.progressBg:setScaleX(0.6)
 end
 
 function Tower:alert()
@@ -56,10 +83,12 @@ function Tower:hurt()
 			self.ccSprite:stopAction(self.alert_action)
 			self.alert_action = nil
 		end
+		self.progress:setPercentage(100)
 		self.ccSprite:stopAction(self.createSoldier_action)
 		self.ccSprite:setColor(ccc3(0,255,0))
 		return
 	end
+	self.progress:setPercentage(self.MP/self.Max_MP*100)
 	if not self.alert_action then
 		self:alert()
 	end
@@ -80,6 +109,9 @@ function Tower:createSoldier()
 			bp:setPosition(ccp(x-100*(loop+math.random()),100+440*math.random()))
 			bp:setDirection(0)
 			bp.ccSprite:setColor(ccc3(255,0,0))
+			local name = string.format("士兵%03d", self.soldierIndex)
+			self.soldierIndex = self.soldierIndex + 1
+			bp:setName(name)
 			table.insert(AI.getInstance().tbl_Enemy, bp)
             table.insert(AI.getInstance().tbl_Soldier, bp)
 		end

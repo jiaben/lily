@@ -21,20 +21,22 @@ function Hero:ctor(heroType)
 	self.progress = CCProgressTimer:create(progressSprite)
 	self.progress:setType(kCCProgressTimerTypeBar)
 	self.progress:setMidpoint(ccp(0,1))
-	self.progress:setBarChangeRate(ccp(0,1))
+	self.progress:setBarChangeRate(ccp(1,0))
 --	progressSprite:setAnchorPoint(ccp(0,0))
 
 	self.progressBg = CCSprite:create("res/ui/word_cell.png",CCRectMake(0,0,200,20))
 	self.progressBg:addChild(self.progress)
+	local szProgressBg = self.progressBg:getContentSize()
+	self.progress:setPosition(ccp(szProgressBg.width/2, szProgressBg.height/2))
 
---	self.progress:setPosition(self.progressBg:getPosition())
 	self.progress:setPercentage(100)
-	
+
+	local szHero = self.ccSprite:getContentSize()
 	self.ccSprite:addChild(self.progressBg)
 	self.progressBg:setPosition(ccp(0,300))
 	self.label_name = CCLabelTTF:create("", "Arial", 40)
 	self.label_name:setString(heroType)
-	self.label_name:setPosition(ccp(0,50))
+	self.label_name:setPosition(ccp(100,50))
 	self.progressBg:addChild(self.label_name)
 end
 
@@ -55,9 +57,14 @@ function Hero:createArmature()
     self.armature = CCArmature:create(name)
 end
 
-function Hero:setName()
+function Hero:setName(name)
 	self.name = name
 	self.label_name:setString(name)
+	if self.isEnemy then
+		self.label_name:setColor(ccc3(255,0,0))
+	else
+		self.label_name:setColor(ccc3(0,255,0))
+	end
 end
 
 function Hero:setPosition(p)
