@@ -1,4 +1,5 @@
 require "Object.SoldierBase"
+<<<<<<< HEAD
 require "Object.Hero"
 Soldier = class("Soldier",Hero)
 
@@ -51,3 +52,12 @@ function Soldier:attack()
 
 	self.armature:getAnimation():setFrameEventCallFunc(callback_frame)
 end
+=======
+Soldier = class("Soldier",Hero)
+
+function Soldier:onDie()
+    AI.getInstance():removeEnemy(self)
+    AI.getInstance():removeSoldier(self)
+end
+
+>>>>>>> 0d6fedf3b30a5772a12b1817466de6124e9d58a0
