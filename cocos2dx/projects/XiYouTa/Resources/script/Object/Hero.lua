@@ -38,10 +38,15 @@ function Hero:ctor(heroType)
 	self.label_name:setString(heroType)
 	self.label_name:setPosition(ccp(100,50))
 	self.progressBg:addChild(self.label_name)
+	self.isHero = true
 end
 
 function Hero:getSprite()
     return self.ccSprite
+end
+
+function Hero:setScale(f)
+	self.armature:setScale(f)
 end
 
 function Hero:remove()
@@ -162,11 +167,12 @@ function Hero:setAttackEvent(e)
 end
 
 function Hero:attack()
-    if self.alive == false then
+    if self.alive == false or self.isOccup then
         print(" hero dead")
         self.attackEvent:callback()
         return
     end
+	
 	local n = math.floor(math.random()*2)+1
 	self.armature:getAnimation():play(string.format("attack%02d",n),-1,-1,0)
 

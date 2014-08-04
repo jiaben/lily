@@ -2,6 +2,11 @@ require "Object.SoldierBase"
 require "Object.Hero"
 Soldier = class("Soldier",Hero)
 
+function Soldier:ctor(heroType)
+	Hero.ctor(self, heroType)
+	self.isHero = false
+end
+
 function Soldier:hurt()
 	self.MP = self.MP - 20
 	if self.MP < 0 then

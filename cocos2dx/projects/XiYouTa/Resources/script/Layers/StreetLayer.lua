@@ -55,6 +55,21 @@ function StreetLayer:addTower()
 
 end
 
+function StreetLayer:HeroDonotMove(hero)
+	hero:getSprite():retain()
+	hero:getSprite():removeFromParentAndCleanup(false)
+	self.bgLayer:addChild(hero:getSprite())
+	hero:getSprite():release()
+	local x,y = AI.getInstance():getCurrentTower():getPosition()
+	hero:setScale(0.5)
+	hero.isOccup = true
+	hero:getSprite():setPosition(ccp(x, y-200))
+end
+
+function StreetLayer:HeroRun(f, pos)
+	self.bgLayer:runAction(CCMoveBy:create(f,pos))
+end
+
 function StreetLayer:addCharactor()
 	local wy = Hero.new("wuya_zhandou")
 	wy:setMP(200)

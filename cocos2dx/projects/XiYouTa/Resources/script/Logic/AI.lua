@@ -12,6 +12,7 @@ AI.state["attack"]		= 4
 AI.state["hurt"]		= 5
 AI.state["lose"]		= 6
 AI.state["win"]			= 7
+AI.state["pause"]		= 8
 
 
 AI.camp = {}
@@ -60,7 +61,8 @@ local function ai_callback()
         self:_lose()
     elseif self.state == AI.state.win then
         self:win()
-    else
+	elseif self.state == AI.state.pause then
+	else
         error("IN AI: undefined AI status")
     end
 end
@@ -81,6 +83,14 @@ end
 
 function AI:stop()
     self.action_node:stopAction(self.action)
+end
+
+function AI:randGetHero()
+	local index = math.ceil(math.random()*#(self.tbl_Hero))
+	local hero = self.tbl_Hero[index]
+	hero:stand()
+	table.remove(self.tbl_Hero, index)
+	StreetLayer.getInstance():HeroDonotMove(hero)
 end
 
 function AI:_move()
@@ -115,16 +125,33 @@ function AI:getCurrentTower()
 end
 
 function AI:_update()
+	local function callback()
+		for i,v in pairs(self.tbl_Hero) do
+			v:run()
+		end
+		self.state = AI.state.run
+		self.curTower:setClickEnabed(false)
+	end
+
 	if table.maxn(self.tbl_Hero) == 0 then
         self.state = AI.state.lose
 	elseif not self.curTower:isAlive() then
 		table.remove(self.tbl_Tower,1)
 		if #(self.tbl_Tower) > 0 then
-			self.state = AI.state.normal
+			self.state = AI.state.pause
+--			self.state = AI.state.normal
+			self.curTower:setClickEnabed(true)
+			self.delay = performWithDelay(self.action_node, callback, 5.0)
 		else
 			self.state = AI.state.win
 		end
 	end
+end
+
+function AI:continueBattle()
+	self.curTower:setClickEnabed(false)
+	self.action_node:stopAction(self.delay)
+	self.state = AI.state.normal
 end
 
 function AI:getEnemy()
@@ -185,10 +212,9 @@ function AI:_encounter()
 	self.firstHero = self.tbl_Hero[1]
 	local pHero = self.firstHero.ccSprite:convertToWorldSpace(ccp(0,0))
 	
-	print(pTower.x, pTower.y, pHero.x, pHero.y)
-	StreetLayer.getInstance().bgLayer:runAction(CCMoveBy:create(1/30,ccp(-5,0)))
+	StreetLayer.getInstance():HeroRun(1/30,ccp(-5,0))
 	
-	return math.abs(pTower.x-pHero.x) < 200
+	return math.abs(pTower.x-pHero.x) < 400
 end
 
 function AI:CallNextEvent()

@@ -1,13 +1,30 @@
 Tower = class("Tower")
 
 function Tower:ctor(file)
-	self.ccSprite = CCSprite:create(file)
+	self.ccSprite = CCSprite:create()
+	self.ccTowerSprite = CCSprite:create(file)
+	local menuItem = CCMenuItemSprite:create(self.ccTowerSprite, self.ccTowerSprite)
+	local function menuCallback(sender)
+		self.isEnemy = false
+		AI.getInstance():randGetHero()
+		AI.getInstance():continueBattle()
+	end
+	menuItem:registerScriptTapHandler(menuCallback)
+
+	self.towerMenu = CCMenu:create()
+	self.towerMenu:addChild(menuItem)
+	self.towerMenu:setEnabled(false)
+	self.towerMenu:setPosition(ccp(0,0))
+
+	self.ccSprite:addChild(self.towerMenu)
+
 	self.soldierLoop = 0
 	self.alertLoop = 0
 	self.soldier = {}
-	self.Max_MP = 3000
-	self.MP = 3000
+	self.Max_MP = 1000
+	self.MP = 1000
 	self.soldierIndex = 1
+	self.isEnemy = true
 
 	local progressSprite = CCSprite:create("res/ui/blue.png",CCRectMake(0,0,300,20))
 	--	progressSprite:setColor(ccc3(0,100,0))
@@ -23,25 +40,29 @@ function Tower:ctor(file)
 	self.progress:setPosition(ccp(szProgressBg.width/2, szProgressBg.height/2))
 
 	self.progress:setPercentage(100)
-	local szHero = self.ccSprite:getContentSize()
-	self.ccSprite:addChild(self.progressBg)
+	self.ccSprite:addChild(self.progressBg,10)
 	
-	local szTower = self.ccSprite:getContentSize()
-	self.progressBg:setPosition(ccp(szTower.width/2,szTower.height/2+150))
+	local szTower = self.ccTowerSprite:getContentSize()
+	self.progressBg:setPosition(ccp(0,szTower.height/2-100))
 	self.label_name = CCLabelTTF:create("塔", "Arial", 40)
-	self.label_name:setPosition(ccp(100,50))
-	self.progressBg:addChild(self.label_name)
+	self.label_name:setColor(ccc3(255,0,0))
+	self.label_name:setPosition(ccp(0,szTower.height/2-50))
+	self.ccSprite:addChild(self.label_name)
 	self.progressBg:setScaleY(0.4)
 	self.progressBg:setScaleX(0.6)
+end
+
+function Tower:setClickEnabed(b)
+	self.towerMenu:setEnabled(b)
 end
 
 function Tower:alert()
 	local function callback()
 		self.alertLoop = self.alertLoop + 1
 		if self.alertLoop % 2 == 1 then
-			self.ccSprite:setColor(ccc3(255,0,0))
+			self.ccTowerSprite:setColor(ccc3(255,0,0))
 		else
-			self.ccSprite:setColor(ccc3(255,255,255))
+			self.ccTowerSprite:setColor(ccc3(255,255,255))
 		end
 	end
 	self.alert_action = schedule(self.ccSprite, callback, 0.5)
@@ -57,7 +78,7 @@ function Tower:win()
 		self.ccSprite:stopAction(self.createSoldier_action)
 		self.createSoldier_action = nil
 	end
-	self.ccSprite:setColor(ccc3(0,0,255))
+	self.ccTowerSprite:setColor(ccc3(0,0,255))
 end
 
 function Tower:getSprite()
@@ -85,7 +106,8 @@ function Tower:hurt()
 		end
 		self.progress:setPercentage(100)
 		self.ccSprite:stopAction(self.createSoldier_action)
-		self.ccSprite:setColor(ccc3(0,255,0))
+		self.ccTowerSprite:setColor(ccc3(255,255,255))
+		self.label_name:setColor(ccc3(0,255,0))
 		return
 	end
 	self.progress:setPercentage(self.MP/self.Max_MP*100)
@@ -103,10 +125,10 @@ function Tower:createSoldier()
 		for i = 1,4 do
 			local bp = Soldier.new("baopi")
 			bp:setMP(80)
-			bp.isEnemy = true
+			bp.isEnemy = self.isEnemy
 			bp:stand()
 			parent:addChild(bp:getSprite(),2)
-			bp:setPosition(ccp(x-100*(loop+math.random()),100+440*math.random()))
+			bp:setPosition(ccp(x-200*(loop+math.random()),100+440*math.random()))
 			bp:setDirection(0)
 			bp.ccSprite:setColor(ccc3(255,0,0))
 			local name = string.format("士兵%03d", self.soldierIndex)
@@ -116,7 +138,7 @@ function Tower:createSoldier()
             table.insert(AI.getInstance().tbl_Soldier, bp)
 		end
 		loop = loop + 1
-		self.ccSprite:setColor(ccc3(255,255,255))
+		self.ccTowerSprite:setColor(ccc3(255,255,255))
 		if self.alert_action then
 			self.ccSprite:stopAction(self.alert_action)
 			self.alert_action = nil
