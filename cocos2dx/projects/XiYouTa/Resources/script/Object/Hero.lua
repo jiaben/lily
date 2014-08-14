@@ -6,7 +6,7 @@ function Hero:ctor(heroType)
 --    self._sprite = CCSprite:create(self._heroMeta["filename"])
     self.heroType = heroType
     print(self.heroType)
-    if not g_HeroBase:isExistHero(heroType) then
+    if not self:isExistType(heroType) then
         error(heroType)
         return
     end
@@ -40,6 +40,14 @@ function Hero:ctor(heroType)
 	self.progressBg:addChild(self.label_name)
 	self.isHero = true
 end
+
+function Hero:isExistType(Type)
+    if not g_HeroBase:isExistHero(Type) then
+        return false
+    end
+    return true
+end
+
 
 function Hero:getSprite()
     return self.ccSprite
@@ -77,10 +85,9 @@ function Hero:setPosition(p)
     self.ccSprite:setPosition(p)
 end
 
-function Hero:setDirection(d)
-    if d == -1 then
+function Hero:setDirection(ff)
+    if ff == -1 then
         local scale = self.ccSprite:getScale()
---        self.armature:getAnimation():setFlipX(true)
         self.armature:setScaleX(-1)
     end
 end

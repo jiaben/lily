@@ -7,6 +7,28 @@ function Soldier:ctor(heroType)
 	self.isHero = false
 end
 
+function Soldier:isExistType(Type)
+    if not g_SoldierBase:isExistSoldier(Type) then
+        return false
+    end
+    return true
+end
+
+function Soldier:createArmature()
+    local name = self.heroType
+    self.armature = CCArmature:create(name)
+end
+
+function Soldier:setDirection(ff)
+    if ff == -1 then
+--        error("in soldier set direction")
+        local scale = self.ccSprite:getScale()
+        self.armature:setScaleX(-2.5)
+        self.armature:setScaleY(2.5)
+    end
+end
+
+
 function Soldier:hurt()
 	self.MP = self.MP - 20
 	if self.MP < 0 then
@@ -37,11 +59,12 @@ function Soldier:attack()
         return
     end
 	local n = math.floor(math.random()*2)+1
-	self.armature:getAnimation():play(string.format("attack%02d",n),-1,-1,0)
+	--self.armature:getAnimation():play(string.format("attack%02d",n),-1,-1,0)
+    self.armature:getAnimation():play(string.format("attack%02d",1),-1,-1,0)
 
 	local i = 0
 	local function callback_frame(armature,movementType,movementID)
-		self.armature:getAnimation():setFrameEventCallFunc()
+        self.armature:getAnimation():setFrameEventCallFunc()
 		local enemy = AI.getInstance():getHero()
 		if enemy then
 			enemy:hurt()

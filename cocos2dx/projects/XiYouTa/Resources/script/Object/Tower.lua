@@ -121,15 +121,19 @@ function Tower:createSoldier()
 	print(x,y)
 	local parent = self.ccSprite:getParent()
 	local loop = 1
+    local soldier_tbl = {"Panda","snk"}
 	local function callback()
 		for i = 1,4 do
-			local bp = Soldier.new("baopi")
+            local index = math.ceil(math.random()*#(soldier_tbl))
+            local soldier_type = soldier_tbl[index]
+			local bp = Soldier.new(soldier_type)
 			bp:setMP(80)
 			bp.isEnemy = self.isEnemy
 			bp:stand()
 			parent:addChild(bp:getSprite(),2)
 			bp:setPosition(ccp(x-200*(loop+math.random()),100+440*math.random()))
-			bp:setDirection(0)
+            bp:setScale(2.5)
+			bp:setDirection(-1)
 			bp.ccSprite:setColor(ccc3(255,0,0))
 			local name = string.format("士兵%03d", self.soldierIndex)
 			self.soldierIndex = self.soldierIndex + 1
