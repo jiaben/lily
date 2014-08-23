@@ -1,5 +1,6 @@
 require "Object.Hero"
 require "Object.Soldier"
+require "Object.EnemySoldier"
 require "Logic.AI"
 require "Object.Tower"
 StreetLayer = class("StreetLayer")
@@ -18,6 +19,7 @@ function StreetLayer:ctor(name)
 	self.tbl_Tower   = {}
 	self.tbl_Enemy	 = {}
 	self.tbl_Soldier = {}
+    self.tbl_EnemySoldier = {}
 	StreetLayer._instance = self
 end
 
@@ -33,6 +35,7 @@ function StreetLayer:init()
 	self.layer:addChild(self.bgLayer)
     self:addCharactor()
 	self:addTower()
+    self:initSoldier()
 	AI.new()
 	AI.getInstance():start()
 end
@@ -80,7 +83,7 @@ function StreetLayer:addCharactor()
 	table.insert(self.tbl_Hero, wy)
 
     local jp = Hero.new("jiaopi")
-	jp:setMP(240)
+	jp:setMP(200)
     self.layer:addChild(jp:getSprite(),2)
     jp:setPosition(ccp(150,200))
     jp:setDirection(-1)
@@ -88,7 +91,7 @@ function StreetLayer:addCharactor()
 	table.insert(self.tbl_Hero, jp)
 
     local dt = Hero.new("datian")
-	dt:setMP(120)
+	dt:setMP(200)
     self.layer:addChild(dt:getSprite(),2)
     dt:setPosition(ccp(230,400))
 	dt:setDirection(-1)
@@ -96,10 +99,18 @@ function StreetLayer:addCharactor()
 	table.insert(self.tbl_Hero,dt)
 
     local hn = Hero.new("chenhaonan")
-	hn:setMP(480)
+	hn:setMP(200)
     self.layer:addChild(hn:getSprite(),2)
     hn:setPosition(ccp(320,200))
     hn:setDirection(-1)
 	hn:setName("陈浩南")
 	table.insert(self.tbl_Hero, hn)
+end
+
+function StreetLayer:initSoldier()
+    local node = CCNode:create()
+    local function callback()
+        print("create soldier count = 5")
+    end
+    schedule(self.layer, callback, 15)
 end

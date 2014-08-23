@@ -25,6 +25,7 @@ function AI:ctor()
     self.tbl_Tower  	= StreetLayer.getInstance().tbl_Tower
 	self.tbl_Enemy		= {}
 	self.tbl_Soldier	= StreetLayer.getInstance().tbl_Soldier
+    self.tbl_EnemySoldier = StreetLayer.getInstance().tbl_EnemySoldier
     self.tbl_deadObj    = {}
     self.state 			= AI.state.normal
     AI.instance 		= self
@@ -117,6 +118,10 @@ function AI:_attack()
 		local event = AttackEvent.new(v)
 		EventManager.getInstance():pushEvent(event)
 	end
+    for i,v in pairs(self.tbl_EnemySoldier) do
+		local event = AttackEvent.new(v)
+		EventManager.getInstance():pushEvent(event)
+	end
 	EventManager.getInstance():callEvent()
 end
 
@@ -185,6 +190,15 @@ function AI:removeSoldier(soldier)
 	end
 end
 
+function AI:removeEnemySoldier(soldier)
+    for i,v in pairs(self.tbl_EnemySoldier) do
+		if soldier == v then
+			table.remove(self.tbl_EnemySoldier, i)
+            break
+		end
+	end
+end
+
 function AI:removeHero(hero)
     for i,v in pairs(self.tbl_Hero) do
 		if hero == v then
@@ -230,9 +244,9 @@ end
 
 function AI:_lose()
 	self.curTower:win()
-	for i,v in pairs(self.tbl_Enemy) do
-		v:win()
-	end
+	--for i,v in pairs(self.tbl_Enemy) do
+	--	v:win()
+	--end
 	self:stop()
 end
 
