@@ -1,25 +1,25 @@
 require "Object.SoldierBase"
 require "Object.Hero"
-Soldier = class("Soldier",Hero)
+EnemySoldier = class("EnemySoldier",Hero)
 
-function Soldier:ctor(heroType)
+function EnemySoldier:ctor(heroType)
 	Hero.ctor(self, heroType)
 	self.isHero = false
 end
 
-function Soldier:isExistType(Type)
+function EnemySoldier:isExistType(Type)
     if not g_SoldierBase:isExistSoldier(Type) then
         return false
     end
     return true
 end
 
-function Soldier:createArmature()
+function EnemySoldier:createArmature()
     local name = self.heroType
     self.armature = CCArmature:create(name)
 end
 
-function Soldier:setDirection(ff)
+function EnemySoldier:setDirection(ff)
     if ff == -1 then
 --        error("in soldier set direction")
         local scale = self.ccSprite:getScale()
@@ -28,7 +28,7 @@ function Soldier:setDirection(ff)
     end
 end
 
-function Soldier:attack()
+function EnemySoldier:attack()
     if self.alive == false then
         print("alive == false soldier")
         self.attackEvent:callback()
@@ -43,7 +43,7 @@ function Soldier:attack()
         self.armature:getAnimation():setFrameEventCallFunc()
 		local enemy = AI.getInstance():getHero()
 		if enemy then
-			enemy:hurt(5)
+			enemy:hurt(10)
 		else
 			self.armature:getAnimation():play("stand")
 			return
@@ -56,7 +56,7 @@ function Soldier:attack()
 	self.armature:getAnimation():setFrameEventCallFunc(callback_frame)
 end
 
-function Soldier:onDie()
+function EnemySoldier:onDie()
     AI.getInstance():removeEnemy(self)
-    AI.getInstance():removeSoldier(self)
+    AI.getInstance():removeEnemySoldier(self)
 end

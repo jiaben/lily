@@ -117,8 +117,8 @@ function Hero:run()
     self.armature:getAnimation():play(string.format("run%02d",n))
 end
 
-function Hero:hurt()
-	self.MP = self.MP - 20
+function Hero:hurt(value)
+	self.MP = self.MP - value
 	if self.MP < 0 then
 		self:die()
 		return
@@ -189,9 +189,9 @@ function Hero:attack()
 		local enemy = AI.getInstance():getEnemy()
 		local tower =  AI.getInstance():getCurrentTower()
 		if enemy then
-			enemy:hurt()
+			enemy:hurt(20)
 		elseif tower:isAlive() then
-			tower:hurt()
+			tower:hurt(20)
 		else
 			self.armature:getAnimation():play("stand")
 			return
