@@ -13,11 +13,11 @@ HeroBase.tblHeroMetaData = {}
         [{},{}]
  --]]
 
-g_tblZhujv = {"baopi", "jiaopi", "datian", "chenhaonan", "wuya_zhandou"}
+g_tblZhujv = {"Panda","snk"}
 function HeroBase:ctor()
     self.hero = {}
     for i, v in pairs(g_tblZhujv) do
-        local path = string.format("res/animation/zhujv_%s/zhujv_%s.ExportJson", v, v)
+        local path = string.format("res/animation/%s/%s.ExportJson", v, v)
         CCArmatureDataManager:sharedArmatureDataManager():addArmatureFileInfo(path)
         self.hero[v] = true
     end

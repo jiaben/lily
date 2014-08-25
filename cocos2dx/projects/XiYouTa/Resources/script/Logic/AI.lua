@@ -86,6 +86,11 @@ function AI:stop()
     self.action_node:stopAction(self.action)
 end
 
+function AI:update(dt)
+    --print("AI:update")
+    --EventManager.getInstance():callEvent()
+end
+
 function AI:randGetHero()
 	local index = math.ceil(math.random()*#(self.tbl_Hero))
 	local hero = self.tbl_Hero[index]
@@ -141,6 +146,9 @@ function AI:_update()
 	if table.maxn(self.tbl_Hero) == 0 then
         self.state = AI.state.lose
 	elseif not self.curTower:isAlive() then
+        if #(self.tbl_EnemySoldier) > 0 then
+            return
+        end
 		table.remove(self.tbl_Tower,1)
 		if #(self.tbl_Tower) > 0 then
 			self.state = AI.state.pause

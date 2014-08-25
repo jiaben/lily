@@ -15,7 +15,7 @@ function EnemySoldier:isExistType(Type)
 end
 
 function EnemySoldier:createArmature()
-    local name = self.heroType
+    local name = "zhujv_"..self.heroType
     self.armature = CCArmature:create(name)
 end
 
@@ -23,8 +23,8 @@ function EnemySoldier:setDirection(ff)
     if ff == -1 then
 --        error("in soldier set direction")
         local scale = self.ccSprite:getScale()
-        self.armature:setScaleX(-2.5)
-        self.armature:setScaleY(2.5)
+        --self.armature:setScaleX(-0.4)
+        --self.armature:setScaleY(0.4)
     end
 end
 

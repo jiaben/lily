@@ -13,12 +13,12 @@ SoldierBase.tblHeroMetaData = {}
  [{},{}]
  --]]
 
-g_tblSoldier = {"Panda","snk"}
+g_tblSoldier = {"baopi", "jiaopi", "datian", "chenhaonan", "wuya_zhandou"}
 
 function SoldierBase:ctor()
     self.soldier = {}
     for i, v in pairs(g_tblSoldier) do
-        local path = string.format("res/animation/%s/%s.ExportJson", v, v)
+        local path = string.format("res/animation/zhujv_%s/zhujv_%s.ExportJson", v, v)
         CCArmatureDataManager:sharedArmatureDataManager():addArmatureFileInfo(path)
         self.soldier[v] = true
     end

@@ -3,6 +3,7 @@ require "Object.Soldier"
 require "Object.EnemySoldier"
 require "Logic.AI"
 require "Object.Tower"
+require "Manage.FightMgr"
 StreetLayer = class("StreetLayer")
 
 function StreetLayer:scene()
@@ -39,6 +40,10 @@ function StreetLayer:init()
     self:initSoldier()
 	AI.new()
 	AI.getInstance():start()
+    local function update(dt)
+        AI.getInstance():update(dt)
+    end
+    self.uiLayer:scheduleUpdateWithPriorityLua(update,0)
 end
 
 function StreetLayer:initBG()
@@ -83,39 +88,48 @@ function StreetLayer:HeroRun(f, pos)
 end
 
 function StreetLayer:addCharactor()
-    local wy = Hero.new("wuya_zhandou")
+    local wy = Hero.new("Panda")
 	wy:setMP(200)
+    wy:setSkillTime(30)
+    wy:setSkillHurt(50)
+    wy:setSkillRage(50)
 	self.layer:addChild(wy:getSprite(),2)
 	wy:setPosition(ccp(400,400))
-	wy:setDirection(-1)
-	wy:setName("乌鸦")
+	wy:setDirection(1)
+	wy:setName("熊猫")
 	table.insert(self.tbl_Hero, wy)
 
     --[[
-    local jp = Hero.new("jiaopi")
+    local jp = Hero.new("snk")
 	jp:setMP(200)
     self.layer:addChild(jp:getSprite(),2)
     jp:setPosition(ccp(150,200))
-    jp:setDirection(-1)
-	jp:setName("蕉皮")
+    jp:setDirection(1)
+	jp:setName("哪吒")
 	table.insert(self.tbl_Hero, jp)
     ]]
     
     
-    local dt = Hero.new("datian")
+    local dt = Hero.new("snk")
 	dt:setMP(200)
+    dt:setSkillTime(15)
+    dt:setSkillHurt(20)
+    dt:setSkillRage(20)
     self.layer:addChild(dt:getSprite(),2)
     dt:setPosition(ccp(230,400))
-	dt:setDirection(-1)
-	dt:setName("大天")
+	dt:setDirection(1)
+	dt:setName("骷髅王")
 	table.insert(self.tbl_Hero,dt)
 
-    local hn = Hero.new("chenhaonan")
+    local hn = Hero.new("Panda")
 	hn:setMP(200)
+    hn:setSkillTime(60)
+    hn:setSkillHurt(100)
+    hn:setSkillRage(120)
     self.layer:addChild(hn:getSprite(),2)
     hn:setPosition(ccp(320,200))
-    hn:setDirection(-1)
-	hn:setName("陈浩南")
+    hn:setDirection(1)
+	hn:setName("小钻风")
 	table.insert(self.tbl_Hero, hn)
 end
 
@@ -123,6 +137,9 @@ function StreetLayer:initSoldier()
     local node = CCNode:create()
     local function callback()
         if #AI.getInstance().tbl_Soldier ~= 0 then
+            return
+        end
+        if #(AI.getInstance().tbl_Hero) == 0 then
             return
         end
         print("create soldier count = 5")
@@ -135,7 +152,7 @@ function StreetLayer:initSoldier()
 			bp.isEnemy = self.isEnemy
 			bp:stand()
 			self.layer:addChild(bp:getSprite(),2)
-			bp:setPosition(ccp(100,i*100))
+			bp:setPosition(ccp(100,600-i*100))
             bp:setScale(2.5)
 			bp:setDirection(1)
 			bp.ccSprite:setColor(ccc3(255,0,0))

@@ -2,13 +2,16 @@ require "Base.init"
 require "Base.extern"
 require "Object.Hero"
 require "Object.Soldier"
-require "Object.Street"
-require "Layers.StreetLayer"
 
 FightMgr = class("FightMgr")
 
 function FightMgr:ctor()
 	self.tblFights = {}
+    self.rage_value = 0
+end
+
+function FightMgr:resetData()
+    self.rage_value = 0
 end
 
 function FightMgr:timeOut()
@@ -22,3 +25,14 @@ function FightMgr:loop()
 		fight:attack()
 	end
 end
+
+function FightMgr:getRage()
+    return self.rage_value
+end
+
+function FightMgr:addRage(value)
+    self.rage_value = self.rage_value + value
+end
+
+
+g_FightMgr = g_FightMgr or FightMgr.new()

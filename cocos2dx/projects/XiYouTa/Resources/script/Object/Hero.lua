@@ -44,10 +44,26 @@ end
 
 function Hero:initpro()
     self.multi_attack = 1.0
+    self.fight_begintime = 0
+    self.skill_time = 0
+    self.skill_hurt = 0
+    self.skill_rage = 0
 end
 
 function Hero:setMultiAttack(value)
     self.multi_attack = value
+end
+
+function Hero:setSkillTime(time)
+    self.skill_time = time
+end
+
+function Hero:setSkillHurt(value)
+    self.skill_hurt = value
+end
+
+function Hero:setSkillRage(value)
+    self.skill_rage = value
 end
 
 function Hero:isExistType(Type)
@@ -75,8 +91,10 @@ function Hero:getArmature()
 end
 
 function Hero:createArmature()
-    local name = "zhujv_"..self.heroType
+    local name = self.heroType
     self.armature = CCArmature:create(name)
+    self.armature:setScaleX(2.5)
+    self.armature:setScaleY(2.5)
 end
 
 function Hero:setName(name)
@@ -122,7 +140,8 @@ end
 function Hero:run()
     local loop1 = math.ceil(math.random()*20)
 
-    local n = math.floor(math.random()*2)+1
+    --local n = math.floor(math.random()*2)+1
+    local n = 1
     self.armature:getAnimation():play(string.format("run%02d",n))
 end
 
@@ -188,11 +207,46 @@ function Hero:attack()
         self.attackEvent:callback()
         return
     end
-	
+	if self.fight_begintime == 0 then
+        self.fight_begintime = os.time()
+    end
 	local n = math.floor(math.random()*2)+1
+    n = 1
 	self.armature:getAnimation():play(string.format("attack%02d",n),-1,-1,0)
 
-	local i = 0
+    local fightTime = os.time() - self.fight_begintime
+    if fightTime >= self.skill_time then
+        self:doSkillAttack()
+        self.fight_begintime = os.time()
+    else
+        self:doNormalAttack()
+    end
+end
+
+function Hero:doSkillAttack()
+    print("hero:do skill attack")
+	local function callback_frame(armature,movementType,movementID)
+		self.armature:getAnimation():setFrameEventCallFunc()
+		local enemy = AI.getInstance():getEnemy()
+		local tower =  AI.getInstance():getCurrentTower()
+		if enemy then
+			enemy:hurt(self.skill_hurt*self.multi_attack)
+		elseif tower:isAlive() then
+			tower:hurt(self.skill_hurt*self.multi_attack)
+		else
+			self.armature:getAnimation():play("stand")
+			return
+		end
+        g_FightMgr:addRage(self.skill_rage)
+        local event = AttackEvent.new(self)
+		EventManager.getInstance():pushEvent(event)
+		self.attackEvent:callback()
+	end
+
+	self.armature:getAnimation():setFrameEventCallFunc(callback_frame)
+end
+
+function Hero:doNormalAttack()
 	local function callback_frame(armature,movementType,movementID)
 		self.armature:getAnimation():setFrameEventCallFunc()
 		local enemy = AI.getInstance():getEnemy()
@@ -205,6 +259,7 @@ function Hero:attack()
 			self.armature:getAnimation():play("stand")
 			return
 		end
+        g_FightMgr:addRage(10)
         local event = AttackEvent.new(self)
 		EventManager.getInstance():pushEvent(event)
 		self.attackEvent:callback()
