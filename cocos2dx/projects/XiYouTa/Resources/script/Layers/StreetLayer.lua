@@ -33,11 +33,20 @@ function StreetLayer:init()
     self.uiLayer = GUIReader:shareReader():widgetFromJsonFile("res/ui/ghm_streetLayer_ui_1/ghm_streetLayer_ui_1.ExportJson")
     self.bgLayer:addChild(self.uiLayer,1)
 	self.layer:addChild(self.bgLayer)
+    self:initBG()
     self:addCharactor()
 	self:addTower()
     self:initSoldier()
 	AI.new()
 	AI.getInstance():start()
+end
+
+function StreetLayer:initBG()
+    for i=1, 5 do
+        local bg = CCSprite:create("res/StreetScene/bbg_burning_land.jpg")
+        bg:setPosition(ccp((i-0.5)*960,320))
+        self.bgLayer:addChild(bg,1)
+    end
 end
 
 function StreetLayer:addTower()
@@ -74,7 +83,7 @@ function StreetLayer:HeroRun(f, pos)
 end
 
 function StreetLayer:addCharactor()
-	local wy = Hero.new("wuya_zhandou")
+    local wy = Hero.new("wuya_zhandou")
 	wy:setMP(200)
 	self.layer:addChild(wy:getSprite(),2)
 	wy:setPosition(ccp(400,400))
@@ -82,6 +91,7 @@ function StreetLayer:addCharactor()
 	wy:setName("乌鸦")
 	table.insert(self.tbl_Hero, wy)
 
+    --[[
     local jp = Hero.new("jiaopi")
 	jp:setMP(200)
     self.layer:addChild(jp:getSprite(),2)
@@ -89,7 +99,9 @@ function StreetLayer:addCharactor()
     jp:setDirection(-1)
 	jp:setName("蕉皮")
 	table.insert(self.tbl_Hero, jp)
-
+    ]]
+    
+    
     local dt = Hero.new("datian")
 	dt:setMP(200)
     self.layer:addChild(dt:getSprite(),2)
@@ -110,7 +122,31 @@ end
 function StreetLayer:initSoldier()
     local node = CCNode:create()
     local function callback()
+        if #AI.getInstance().tbl_Soldier ~= 0 then
+            return
+        end
         print("create soldier count = 5")
+        local soldier_tbl = {"snk"}
+        for i = 1,5 do
+            local index = math.ceil(math.random()*#(soldier_tbl))
+            local soldier_type = soldier_tbl[index]
+			local bp = Soldier.new(soldier_type)
+			bp:setMP(30)
+			bp.isEnemy = self.isEnemy
+			bp:stand()
+			self.layer:addChild(bp:getSprite(),2)
+			bp:setPosition(ccp(100,i*100))
+            bp:setScale(2.5)
+			bp:setDirection(1)
+			bp.ccSprite:setColor(ccc3(255,0,0))
+			local name = string.format("士兵%03d", i)
+			bp:setName(name)
+            table.insert(AI.getInstance().tbl_Soldier, bp)
+		end
+        for i,v in pairs(AI.getInstance().tbl_Soldier) do
+            local event = AttackEvent.new(v)
+            EventManager.getInstance():pushEvent(event)
+        end
     end
     schedule(self.layer, callback, 15)
 end

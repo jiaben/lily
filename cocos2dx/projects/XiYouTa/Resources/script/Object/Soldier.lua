@@ -41,9 +41,9 @@ function Soldier:attack()
 	local i = 0
 	local function callback_frame(armature,movementType,movementID)
         self.armature:getAnimation():setFrameEventCallFunc()
-		local enemy = AI.getInstance():getHero()
-		if enemy then
-			enemy:hurt(5)
+        local tower =  AI.getInstance():getCurrentTower()
+		if tower then
+			tower:hurt(50)
 		else
 			self.armature:getAnimation():play("stand")
 			return
@@ -57,6 +57,9 @@ function Soldier:attack()
 end
 
 function Soldier:onDie()
-    AI.getInstance():removeEnemy(self)
     AI.getInstance():removeSoldier(self)
+    local tower =  AI.getInstance():getCurrentTower()
+    if tower and #AI.getInstance().tbl_Soldier == 0 then
+        tower:stopAlertAction()
+    end
 end

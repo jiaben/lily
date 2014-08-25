@@ -68,12 +68,15 @@ function Tower:alert()
 	self.alert_action = schedule(self.ccSprite, callback, 0.5)
 end
 
+function Tower:stopAlertAction()
+    if self.alert_action then
+        self.ccSprite:stopAction(self.alert_action)
+        self.alert_action = nil
+    end
+end
+
 function Tower:win()
-	if self.alert_action then
-		self.ccSprite:stopAction(self.alert_action)
-		self.alert_action = nil
-	end
-	
+	self:stopAlertAction()
 	if self.createSoldier_action then
 		self.ccSprite:stopAction(self.createSoldier_action)
 		self.createSoldier_action = nil
@@ -100,10 +103,7 @@ end
 function Tower:hurt(value)
 	self.MP = self.MP - value
 	if self.MP <= 0 then
-		if self.alert_action then
-			self.ccSprite:stopAction(self.alert_action)
-			self.alert_action = nil
-		end
+		self:stopAlertAction()
 		self.progress:setPercentage(100)
 		self.ccSprite:stopAction(self.createSoldier_action)
 		self.ccTowerSprite:setColor(ccc3(255,255,255))
@@ -121,7 +121,7 @@ function Tower:createSoldier()
 	print(x,y)
 	local parent = self.ccSprite:getParent()
 	local loop = 1
-    local soldier_tbl = {"Panda","snk"}
+    local soldier_tbl = {"Panda"}
 	local function callback()
 		for i = 1,4 do
             local index = math.ceil(math.random()*#(soldier_tbl))
@@ -135,7 +135,7 @@ function Tower:createSoldier()
             bp:setScale(2.5)
 			bp:setDirection(-1)
 			bp.ccSprite:setColor(ccc3(255,0,0))
-			local name = string.format("士兵%03d", self.soldierIndex)
+			local name = string.format("敌人%03d", self.soldierIndex)
 			self.soldierIndex = self.soldierIndex + 1
 			bp:setName(name)
 			table.insert(AI.getInstance().tbl_Enemy, bp)
@@ -143,10 +143,7 @@ function Tower:createSoldier()
 		end
 		loop = loop + 1
 		self.ccTowerSprite:setColor(ccc3(255,255,255))
-		if self.alert_action then
-			self.ccSprite:stopAction(self.alert_action)
-			self.alert_action = nil
-		end
+		self:stopAlertAction()
         if loop ~= 1 then
             for i,v in pairs(AI.getInstance().tbl_EnemySoldier) do
                 local event = AttackEvent.new(v)

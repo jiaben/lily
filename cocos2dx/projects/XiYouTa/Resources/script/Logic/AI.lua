@@ -171,6 +171,12 @@ function AI:getHero()
 	return self.tbl_Hero[index]
 end
 
+function AI:getSoldier()
+	local len = #(self.tbl_Soldier)
+	local index = math.ceil(math.random()*len)
+	return self.tbl_Soldier[index]
+end
+
 function AI:removeEnemy(enemy)
 	for i,v in pairs(self.tbl_Enemy) do
 		if enemy == v then

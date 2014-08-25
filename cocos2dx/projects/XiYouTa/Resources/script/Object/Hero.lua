@@ -39,6 +39,15 @@ function Hero:ctor(heroType)
 	self.label_name:setPosition(ccp(100,50))
 	self.progressBg:addChild(self.label_name)
 	self.isHero = true
+    self:initpro()
+end
+
+function Hero:initpro()
+    self.multi_attack = 1.0
+end
+
+function Hero:setMultiAttack(value)
+    self.multi_attack = value
 end
 
 function Hero:isExistType(Type)
@@ -189,9 +198,9 @@ function Hero:attack()
 		local enemy = AI.getInstance():getEnemy()
 		local tower =  AI.getInstance():getCurrentTower()
 		if enemy then
-			enemy:hurt(20)
+			enemy:hurt(20*self.multi_attack)
 		elseif tower:isAlive() then
-			tower:hurt(20)
+			tower:hurt(20*self.multi_attack)
 		else
 			self.armature:getAnimation():play("stand")
 			return

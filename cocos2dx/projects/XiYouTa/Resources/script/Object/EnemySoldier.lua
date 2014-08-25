@@ -30,7 +30,7 @@ end
 
 function EnemySoldier:attack()
     if self.alive == false then
-        print("alive == false soldier")
+        print("alive == false enemy soldier")
         self.attackEvent:callback()
         return
     end
@@ -41,9 +41,12 @@ function EnemySoldier:attack()
 	local i = 0
 	local function callback_frame(armature,movementType,movementID)
         self.armature:getAnimation():setFrameEventCallFunc()
-		local enemy = AI.getInstance():getHero()
-		if enemy then
-			enemy:hurt(10)
+        local soldier = AI.getInstance():getSoldier()
+		local hero = AI.getInstance():getHero()
+		if soldier then
+			soldier:hurt(20)
+        elseif hero then
+            hero:hurt(10)
 		else
 			self.armature:getAnimation():play("stand")
 			return
