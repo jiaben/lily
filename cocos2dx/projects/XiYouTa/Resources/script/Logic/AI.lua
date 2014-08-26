@@ -88,7 +88,7 @@ end
 
 function AI:update(dt)
     --print("AI:update")
-    --EventManager.getInstance():callEvent()
+    EventManager.getInstance():callEvent()
 end
 
 function AI:randGetHero()
@@ -149,6 +149,7 @@ function AI:_update()
         if #(self.tbl_EnemySoldier) > 0 then
             return
         end
+        self:clearSoldier()
 		table.remove(self.tbl_Tower,1)
 		if #(self.tbl_Tower) > 0 then
 			self.state = AI.state.pause
@@ -193,6 +194,14 @@ function AI:removeEnemy(enemy)
 		end
 	end
     table.insert(self.tbl_deadObj,enemy)
+end
+
+function AI:clearSoldier()
+    for i,v in pairs(self.tbl_Soldier) do
+        v.alive = false
+		v:onDieCallBack()
+	end
+    self.tbl_Soldier = {}
 end
 
 function AI:removeSoldier(soldier)

@@ -21,33 +21,15 @@ function Soldier:setDirection(ff)
     end
 end
 
-function Soldier:attack()
-    if self.alive == false then
-        print("alive == false soldier")
-        self.attackEvent:callback()
+function Soldier:calculate()
+    local tower =  AI.getInstance():getCurrentTower()
+    if tower then
+        tower:hurt(50)
+    else
+        self.armature:getAnimation():play("stand")
         return
     end
-	local n = math.floor(math.random()*2)+1
-	--self.armature:getAnimation():play(string.format("attack%02d",n),-1,-1,0)
-    self.armature:getAnimation():play(string.format("attack%02d",1),-1,-1,0)
-
-	local i = 0
-	local function callback_frame(armature,movementType,movementID)
-        self.armature:getAnimation():setFrameEventCallFunc()
-        local tower =  AI.getInstance():getCurrentTower()
-		if tower then
-			tower:hurt(50)
-		else
-			self.armature:getAnimation():play("stand")
-			return
-		end
-        g_FightMgr:addRage(2)
-        local event = AttackEvent.new(self)
-		EventManager.getInstance():pushEvent(event)
-		self.attackEvent:callback()
-	end
-
-	self.armature:getAnimation():setFrameEventCallFunc(callback_frame)
+    g_FightMgr:addRage(2)
 end
 
 function Soldier:onDie()

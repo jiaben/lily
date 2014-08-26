@@ -28,35 +28,17 @@ function EnemySoldier:setDirection(ff)
     end
 end
 
-function EnemySoldier:attack()
-    if self.alive == false then
-        print("alive == false enemy soldier")
-        self.attackEvent:callback()
+function EnemySoldier:calculate()
+    local soldier = AI.getInstance():getSoldier()
+    local hero = AI.getInstance():getHero()
+    if soldier then
+        soldier:hurt(20)
+    elseif hero then
+        hero:hurt(10)
+    else
+        self.armature:getAnimation():play("stand")
         return
     end
-	local n = math.floor(math.random()*2)+1
-	--self.armature:getAnimation():play(string.format("attack%02d",n),-1,-1,0)
-    self.armature:getAnimation():play(string.format("attack%02d",1),-1,-1,0)
-
-	local i = 0
-	local function callback_frame(armature,movementType,movementID)
-        self.armature:getAnimation():setFrameEventCallFunc()
-        local soldier = AI.getInstance():getSoldier()
-		local hero = AI.getInstance():getHero()
-		if soldier then
-			soldier:hurt(20)
-        elseif hero then
-            hero:hurt(10)
-		else
-			self.armature:getAnimation():play("stand")
-			return
-		end
-        local event = AttackEvent.new(self)
-		EventManager.getInstance():pushEvent(event)
-		self.attackEvent:callback()
-	end
-
-	self.armature:getAnimation():setFrameEventCallFunc(callback_frame)
 end
 
 function EnemySoldier:onDie()

@@ -5,7 +5,6 @@ function Hero:ctor(heroType)
 --    self._heroMeta = HeroBase:getData(heroType)
 --    self._sprite = CCSprite:create(self._heroMeta["filename"])
     self.heroType = heroType
-    print(self.heroType)
     if not self:isExistType(heroType) then
         error(heroType)
         return
@@ -15,6 +14,8 @@ function Hero:ctor(heroType)
     self.ccSprite:addChild(self.armature)
     self.ccSprite:setScale(0.4)
     self.alive = true
+    self.action_node = CCNode:create()
+    self.ccSprite:addChild(self.action_node)
 
 	local progressSprite = CCSprite:create("res/ui/blue.png",CCRectMake(0,0,200,20))
 --	progressSprite:setColor(ccc3(0,100,0))
@@ -39,15 +40,21 @@ function Hero:ctor(heroType)
 	self.label_name:setPosition(ccp(100,50))
 	self.progressBg:addChild(self.label_name)
 	self.isHero = true
+    self.attacking = false
     self:initpro()
 end
 
 function Hero:initpro()
     self.multi_attack = 1.0
+    self.attack_speed = 1.0
     self.fight_begintime = 0
     self.skill_time = 0
     self.skill_hurt = 0
     self.skill_rage = 0
+end
+
+function Hero:setAttackSpeed(value)
+    self.attack_speed = value
 end
 
 function Hero:setMultiAttack(value)
@@ -107,6 +114,10 @@ function Hero:setName(name)
 	end
 end
 
+function Hero:getPosition()
+	return self.ccSprite:getPosition()
+end
+
 function Hero:setPosition(p)
 	
     self.ccSprite:setPosition(p)
@@ -115,7 +126,7 @@ end
 function Hero:setDirection(ff)
     if ff == -1 then
         local scale = self.ccSprite:getScale()
-        self.armature:setScaleX(-1)
+        self.armature:setScaleX(-2.5)
     end
 end
 
@@ -152,6 +163,9 @@ function Hero:hurt(value)
 		return
 	end
 	self.progress:setPercentage(self.MP/self.MaxMP*100)
+    if self.attacking == true then
+        return
+    end
 	local function callback_move(armature,movementType,movementID)
 		if movementType == ccs.MovementEventType.COMPLETE then
 			armature:getAnimation():setMovementEventCallFunc()
@@ -184,13 +198,13 @@ function Hero:onDieCallBack()
     self.ccSprite:setVisible(false)
     local event = DeadEvent.new(self)
     EventManager.getInstance():pushEvent(event)
---    self.attackEvent:callback()
+--  self.attackEvent:callback()
 end
 
 function Hero:dead()
     AI.getInstance():removeDeadObject(self)
 	self.ccSprite:removeFromParentAndCleanup(true)
-    self.attackEvent:callback()
+    --self.attackEvent:callback()
 end
 
 function Hero:stand()
@@ -203,8 +217,8 @@ end
 
 function Hero:attack()
     if self.alive == false or self.isOccup then
-        print(" hero dead")
-        self.attackEvent:callback()
+        print(" obj dead")
+        --self.attackEvent:callback()
         return
     end
 	if self.fight_begintime == 0 then
@@ -212,10 +226,19 @@ function Hero:attack()
     end
 	local n = math.floor(math.random()*2)+1
     n = 1
+    local function callback_move(armature,movementType,movementID)
+		if movementType == ccs.MovementEventType.COMPLETE then
+			armature:getAnimation():setMovementEventCallFunc()
+			self.armature:getAnimation():play("stand")
+            self.attacking = false
+            self:nextAttack()
+		end
+	end
+    self.armature:getAnimation():setMovementEventCallFunc(callback_move)
 	self.armature:getAnimation():play(string.format("attack%02d",n),-1,-1,0)
-
+    self.attacking = true
     local fightTime = os.time() - self.fight_begintime
-    if fightTime >= self.skill_time then
+    if self.skill_time ~= 0 and fightTime >= self.skill_time then
         self:doSkillAttack()
         self.fight_begintime = os.time()
     else
@@ -224,48 +247,83 @@ function Hero:attack()
 end
 
 function Hero:doSkillAttack()
-    print("hero:do skill attack")
+    --print("hero:do skill attack")
 	local function callback_frame(armature,movementType,movementID)
 		self.armature:getAnimation():setFrameEventCallFunc()
 		local enemy = AI.getInstance():getEnemy()
 		local tower =  AI.getInstance():getCurrentTower()
+        local tx,ty
 		if enemy then
 			enemy:hurt(self.skill_hurt*self.multi_attack)
+            tx,ty = enemy:getPosition()
 		elseif tower:isAlive() then
 			tower:hurt(self.skill_hurt*self.multi_attack)
+            tx,ty = tower:getPosition()
 		else
 			self.armature:getAnimation():play("stand")
 			return
 		end
         g_FightMgr:addRage(self.skill_rage)
-        local event = AttackEvent.new(self)
-		EventManager.getInstance():pushEvent(event)
-		self.attackEvent:callback()
-	end
+        --CCSpriteFrameCache:sharedSpriteFrameCache():addSpriteFramesWithFile("res/skill_eff/eff_tile_TH_atk2/sheet.plist")
+        --利用帧缓存创建精灵
+        --local sp = CCSprite:createWithSpriteFrameName("s1.png")
+        local sp = CCSprite:create("res/skill_eff/eff_tile_TH_atk2/sheet_PList.Dir/s1.png")
+        local x,y = self.ccSprite:getPosition()
+        sp:setPosition(ccp(x,y))
+        self.ccSprite:getParent():addChild(sp)
+    
+        local animFrames = CCArray:createWithCapacity(4)
+        for i=1, 4 do
+            local str = string.format("res/skill_eff/eff_tile_TH_atk2/sheet_PList.Dir/s%d.png", i)
+            local frame = CCSpriteFrame:create(str,CCRectMake(0, 0, 272, 129))
+            animFrames:addObject(frame)
+        end
+        local animation = CCAnimation:createWithSpriteFrames(animFrames, 0.3)
+        --animation:setLoops(-1)
+        sp:runAction(CCAnimate:create(animation))
+
+        local function skilleff_callback()
+            print("skill eff end")
+            sp:removeFromParentAndCleanup(true)
+        end
+        local callfunc = CCCallFunc:create(skilleff_callback)
+        local sequence = CCSequence:createWithTwoActions(CCMoveTo:create(1.0,ccp(tx,ty)), callfunc)
+        sp:runAction(sequence)
+    end
 
 	self.armature:getAnimation():setFrameEventCallFunc(callback_frame)
 end
 
 function Hero:doNormalAttack()
-	local function callback_frame(armature,movementType,movementID)
+    local function callback_frame(armature,movementType,movementID)
 		self.armature:getAnimation():setFrameEventCallFunc()
-		local enemy = AI.getInstance():getEnemy()
-		local tower =  AI.getInstance():getCurrentTower()
-		if enemy then
-			enemy:hurt(20*self.multi_attack)
-		elseif tower:isAlive() then
-			tower:hurt(20*self.multi_attack)
-		else
-			self.armature:getAnimation():play("stand")
-			return
-		end
-        g_FightMgr:addRage(10)
-        local event = AttackEvent.new(self)
-		EventManager.getInstance():pushEvent(event)
-		self.attackEvent:callback()
+        self:calculate()
 	end
-
 	self.armature:getAnimation():setFrameEventCallFunc(callback_frame)
+end
+
+function Hero:calculate()
+    local enemy = AI.getInstance():getEnemy()
+    local tower =  AI.getInstance():getCurrentTower()
+    if enemy then
+        enemy:hurt(20*self.multi_attack)
+    elseif tower:isAlive() then
+        tower:hurt(20*self.multi_attack)
+    else
+        self.armature:getAnimation():play("stand")
+        return
+    end
+    g_FightMgr:addRage(10)
+end
+
+function Hero:nextAttack()
+    local function attack_func()
+        local event = AttackEvent.new(self)
+        EventManager.getInstance():pushEvent(event)
+        --self.attackEvent:callback()
+        self.delay = nil
+    end
+    self.delay = performWithDelay(self.action_node, attack_func, self.attack_speed)
 end
 
 function Hero:doSkill(skillname)
