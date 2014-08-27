@@ -86,6 +86,10 @@ function AI:stop()
     self.action_node:stopAction(self.action)
 end
 
+function AI:getState()
+    return self.state
+end
+
 function AI:update(dt)
     --print("AI:update")
     EventManager.getInstance():callEvent()

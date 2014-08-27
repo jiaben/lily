@@ -30,10 +30,12 @@ function Soldier:calculate()
         return
     end
     g_FightMgr:addRage(2)
+    StreetLayer.getInstance():updateRage()
 end
 
 function Soldier:onDie()
     g_FightMgr:addRage(5)
+    StreetLayer.getInstance():updateRage()
     AI.getInstance():removeSoldier(self)
     local tower =  AI.getInstance():getCurrentTower()
     if tower and #AI.getInstance().tbl_Soldier == 0 then

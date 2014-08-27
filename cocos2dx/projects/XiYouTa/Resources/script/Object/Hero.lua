@@ -45,6 +45,7 @@ function Hero:ctor(heroType)
 end
 
 function Hero:initpro()
+    self.entity_id = 0
     self.multi_attack = 1.0
     self.attack_speed = 1.0
     self.fight_begintime = 0
@@ -53,12 +54,16 @@ function Hero:initpro()
     self.skill_rage = 0
 end
 
+function Hero:setEntityID(id)
+    self.entity_id = id
+end
+
 function Hero:setAttackSpeed(value)
     self.attack_speed = value
 end
 
-function Hero:setMultiAttack(value)
-    self.multi_attack = value
+function Hero:addMultiAttack(value)
+    self.multi_attack = self.multi_attack + value
 end
 
 function Hero:setSkillTime(time)
@@ -163,6 +168,7 @@ function Hero:hurt(value)
 		return
 	end
 	self.progress:setPercentage(self.MP/self.MaxMP*100)
+    StreetLayer.getInstance():updateHeroHP(self.entity_id,self.MP,self.MaxMP)
     if self.attacking == true then
         return
     end
@@ -264,6 +270,7 @@ function Hero:doSkillAttack()
 			return
 		end
         g_FightMgr:addRage(self.skill_rage)
+        StreetLayer.getInstance():updateRage()
         --CCSpriteFrameCache:sharedSpriteFrameCache():addSpriteFramesWithFile("res/skill_eff/eff_tile_TH_atk2/sheet.plist")
         --利用帧缓存创建精灵
         --local sp = CCSprite:createWithSpriteFrameName("s1.png")
@@ -314,6 +321,7 @@ function Hero:calculate()
         return
     end
     g_FightMgr:addRage(10)
+    StreetLayer.getInstance():updateRage()
 end
 
 function Hero:nextAttack()
