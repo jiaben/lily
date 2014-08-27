@@ -1,0 +1,392 @@
+{
+  "version": "1.0.0.0",
+  "designWidth": 960,
+  "designHeight": 640,
+  "dataScale": 1.0,
+  "textures": [],
+  "texturesPng": [],
+  "nodeTree": {
+    "options": {
+      "$type": "EditorCommon.JsonModel.Component.GUI.RootGUISurrogate, EditorCommon",
+      "visible": true,
+      "frameEvent": null,
+      "name": "Node",
+      "classname": "Node"
+    },
+    "children": [
+      {
+        "options": {
+          "$type": "EditorCommon.JsonModel.Component.GUI.ButtonSurrogate, EditorCommon",
+          "normalData": {
+            "resourceType": 0,
+            "path": "s284.png",
+            "plistFile": ""
+          },
+          "pressedData": {
+            "resourceType": 0
+          },
+          "disabledData": {
+            "resourceType": 0,
+            "path": "s14.png",
+            "plistFile": ""
+          },
+          "text": "",
+          "capInsetsWidth": 1.0,
+          "capInsetsHeight": 1.0,
+          "scale9Width": 100.0,
+          "scale9Height": 100.0,
+          "x": 268.0,
+          "y": 46.0,
+          "touchAble": true,
+          "visible": true,
+          "classType": "Button",
+          "width": 100.0,
+          "height": 100.0,
+          "positionPercentX": 0.558333337,
+          "positionPercentY": 0.14375,
+          "sizePercentX": 0.208333328,
+          "sizePercentY": 0.3125,
+          "actionTag": 725878656,
+          "tag": 1,
+          "name": "card_button_3",
+          "classname": "Button"
+        },
+        "children": [],
+        "classname": "Button"
+      },
+      {
+        "options": {
+          "$type": "EditorCommon.JsonModel.Component.GUI.ButtonSurrogate, EditorCommon",
+          "normalData": {
+            "resourceType": 0,
+            "path": "s500.png",
+            "plistFile": ""
+          },
+          "pressedData": {
+            "resourceType": 0
+          },
+          "disabledData": {
+            "resourceType": 0,
+            "path": "s14.png",
+            "plistFile": ""
+          },
+          "text": "",
+          "capInsetsWidth": 1.0,
+          "capInsetsHeight": 1.0,
+          "scale9Width": 100.0,
+          "scale9Height": 100.0,
+          "x": 46.0,
+          "y": 43.0,
+          "touchAble": true,
+          "visible": true,
+          "classType": "Button",
+          "width": 100.0,
+          "height": 100.0,
+          "positionPercentX": 0.09583333,
+          "positionPercentY": 0.134375,
+          "sizePercentX": 0.208333328,
+          "sizePercentY": 0.3125,
+          "actionTag": 259208064,
+          "tag": 4,
+          "name": "card_button_1",
+          "classname": "Button"
+        },
+        "children": [],
+        "classname": "Button"
+      },
+      {
+        "options": {
+          "$type": "EditorCommon.JsonModel.Component.GUI.ButtonSurrogate, EditorCommon",
+          "normalData": {
+            "resourceType": 0,
+            "path": "s52.png",
+            "plistFile": ""
+          },
+          "pressedData": {
+            "resourceType": 0
+          },
+          "disabledData": {
+            "resourceType": 0,
+            "path": "s14.png",
+            "plistFile": ""
+          },
+          "text": "",
+          "capInsetsWidth": 1.0,
+          "capInsetsHeight": 1.0,
+          "scale9Width": 100.0,
+          "scale9Height": 100.0,
+          "x": 158.0,
+          "y": 46.0,
+          "touchAble": true,
+          "visible": true,
+          "classType": "Button",
+          "width": 100.0,
+          "height": 100.0,
+          "positionPercentX": 0.329166681,
+          "positionPercentY": 0.14375,
+          "sizePercentX": 0.208333328,
+          "sizePercentY": 0.3125,
+          "actionTag": 743890973,
+          "tag": 5,
+          "name": "card_button_2",
+          "classname": "Button"
+        },
+        "children": [],
+        "classname": "Button"
+      },
+      {
+        "options": {
+          "$type": "EditorCommon.JsonModel.Component.GUI.LoadingBarSurrogate, EditorCommon",
+          "textureData": {
+            "resourceType": 0,
+            "path": "GUI/loadingbar.png",
+            "plistFile": ""
+          },
+          "x": 51.0,
+          "y": 517.0,
+          "scaleX": 0.333747655,
+          "scaleY": 0.7529385,
+          "colorR": 143,
+          "colorG": 16,
+          "colorB": 16,
+          "visible": true,
+          "classType": "LoadingBar",
+          "width": 350.0,
+          "height": 24.0,
+          "positionPercentX": 0.10625,
+          "positionPercentY": 1.615625,
+          "sizePercentX": 0.7291667,
+          "sizePercentY": 0.075,
+          "actionTag": 689994245,
+          "tag": 11,
+          "ignoreSize": true,
+          "name": "hp_LoadingBar_1",
+          "classname": "LoadingBar"
+        },
+        "children": [],
+        "classname": "LoadingBar"
+      },
+      {
+        "options": {
+          "$type": "EditorCommon.JsonModel.Component.GUI.LoadingBarSurrogate, EditorCommon",
+          "textureData": {
+            "resourceType": 0,
+            "path": "GUI/loadingbar.png",
+            "plistFile": ""
+          },
+          "x": 165.0,
+          "y": 519.0,
+          "scaleX": 0.2600094,
+          "scaleY": 0.686841249,
+          "colorR": 136,
+          "colorG": 7,
+          "colorB": 7,
+          "visible": true,
+          "classType": "LoadingBar",
+          "width": 350.0,
+          "height": 24.0,
+          "positionPercentX": 0.34375,
+          "positionPercentY": 1.621875,
+          "sizePercentX": 0.7291667,
+          "sizePercentY": 0.075,
+          "actionTag": 160068649,
+          "tag": 12,
+          "ignoreSize": true,
+          "name": "hp_LoadingBar_2",
+          "classname": "LoadingBar"
+        },
+        "children": [],
+        "classname": "LoadingBar"
+      },
+      {
+        "options": {
+          "$type": "EditorCommon.JsonModel.Component.GUI.LoadingBarSurrogate, EditorCommon",
+          "textureData": {
+            "resourceType": 0,
+            "path": "GUI/loadingbar.png",
+            "plistFile": ""
+          },
+          "x": 277.0,
+          "y": 517.0,
+          "scaleX": 0.30134362,
+          "scaleY": 0.6225936,
+          "rotation": -0.007965468,
+          "colorR": 187,
+          "colorG": 17,
+          "colorB": 17,
+          "visible": true,
+          "classType": "LoadingBar",
+          "width": 350.0,
+          "height": 24.0,
+          "positionPercentX": 0.577083349,
+          "positionPercentY": 1.615625,
+          "sizePercentX": 0.7291667,
+          "sizePercentY": 0.075,
+          "actionTag": 102688551,
+          "tag": 13,
+          "ignoreSize": true,
+          "name": "hp_LoadingBar_3",
+          "classname": "LoadingBar"
+        },
+        "children": [],
+        "classname": "LoadingBar"
+      },
+      {
+        "options": {
+          "$type": "EditorCommon.JsonModel.Component.GUI.ImageViewSurrogate, EditorCommon",
+          "fileNameData": {
+            "resourceType": 0,
+            "path": "dialogue_portrait_44.png",
+            "plistFile": ""
+          },
+          "scale9Width": 487.0,
+          "scale9Height": 377.0,
+          "x": 54.0,
+          "y": 581.0,
+          "scaleX": 0.218243212,
+          "scaleY": 0.25523147,
+          "visible": true,
+          "classType": "ImageView",
+          "width": 487.0,
+          "height": 377.0,
+          "positionPercentX": 0.1125,
+          "positionPercentY": 1.815625,
+          "sizePercentX": 0.166666672,
+          "sizePercentY": 0.25,
+          "actionTag": 265467273,
+          "tag": 6,
+          "ignoreSize": true,
+          "name": "HeroHead_1",
+          "classname": "ImageView"
+        },
+        "children": [],
+        "classname": "ImageView"
+      },
+      {
+        "options": {
+          "$type": "EditorCommon.JsonModel.Component.GUI.ImageViewSurrogate, EditorCommon",
+          "fileNameData": {
+            "resourceType": 0,
+            "path": "dialogue_portrait_19.png",
+            "plistFile": ""
+          },
+          "scale9Width": 336.0,
+          "scale9Height": 295.0,
+          "x": 170.0,
+          "y": 588.0,
+          "scaleX": 0.3,
+          "scaleY": 0.3,
+          "visible": true,
+          "classType": "ImageView",
+          "width": 336.0,
+          "height": 295.0,
+          "positionPercentX": 0.354166657,
+          "positionPercentY": 1.8375,
+          "sizePercentX": 0.166666672,
+          "sizePercentY": 0.25,
+          "actionTag": 718359385,
+          "tag": 7,
+          "ignoreSize": true,
+          "name": "HeroHead_2",
+          "classname": "ImageView"
+        },
+        "children": [],
+        "classname": "ImageView"
+      },
+      {
+        "options": {
+          "$type": "EditorCommon.JsonModel.Component.GUI.ImageViewSurrogate, EditorCommon",
+          "fileNameData": {
+            "resourceType": 0,
+            "path": "dialogue_portrait_45.png",
+            "plistFile": ""
+          },
+          "scale9Width": 419.0,
+          "scale9Height": 377.0,
+          "x": 280.0,
+          "y": 588.0,
+          "scaleX": 0.23,
+          "scaleY": 0.24,
+          "visible": true,
+          "classType": "ImageView",
+          "width": 419.0,
+          "height": 377.0,
+          "positionPercentX": 0.5833333,
+          "positionPercentY": 1.8375,
+          "sizePercentX": 0.166666672,
+          "sizePercentY": 0.25,
+          "actionTag": 845525825,
+          "tag": 8,
+          "ignoreSize": true,
+          "name": "HeroHead_3",
+          "classname": "ImageView"
+        },
+        "children": [],
+        "classname": "ImageView"
+      },
+      {
+        "options": {
+          "$type": "EditorCommon.JsonModel.Component.GUI.LabelSurrogate, EditorCommon",
+          "fontSize": 32,
+          "text": "怒气值",
+          "x": 525.0,
+          "y": 48.0,
+          "colorR": 9,
+          "colorG": 189,
+          "colorB": 28,
+          "visible": true,
+          "classType": "Label",
+          "width": 96.0,
+          "height": 37.0,
+          "positionPercentX": 1.09375,
+          "positionPercentY": 0.15,
+          "sizePercentX": 0.189583331,
+          "sizePercentY": 0.071875,
+          "actionTag": 373346469,
+          "tag": 9,
+          "ignoreSize": true,
+          "name": "Label_8",
+          "classname": "Label"
+        },
+        "children": [],
+        "classname": "Label"
+      },
+      {
+        "options": {
+          "$type": "EditorCommon.JsonModel.Component.GUI.LabelAtlasSurrogate, EditorCommon",
+          "charMapFileData": {
+            "resourceType": 0,
+            "path": "GUI/labelatlasimg.png",
+            "plistFile": ""
+          },
+          "startCharMap": "0",
+          "x": 725.0,
+          "y": 48.0,
+          "colorR": 132,
+          "colorG": 207,
+          "colorB": 16,
+          "visible": true,
+          "classType": "LabelAtlas",
+          "width": 240.0,
+          "height": 32.0,
+          "positionPercentX": 1.51041663,
+          "positionPercentY": 0.15,
+          "sizePercentX": 0.5,
+          "sizePercentY": 0.1,
+          "actionTag": 256786864,
+          "tag": 10,
+          "ignoreSize": true,
+          "name": "rage_Label",
+          "classname": "LabelAtlas"
+        },
+        "children": [],
+        "classname": "LabelAtlas"
+      }
+    ],
+    "classname": "Node"
+  },
+  "action": {
+    "speed": 1.0,
+    "timelines": []
+  }
+}

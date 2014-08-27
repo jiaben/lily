@@ -1,0 +1,497 @@
+{
+  "version": "1.0.0.0",
+  "designWidth": 960,
+  "designHeight": 640,
+  "dataScale": 1.0,
+  "textures": [
+    "FightLayer0.plist"
+  ],
+  "texturesPng": [
+    "FightLayer0.png"
+  ],
+  "nodeTree": {
+    "options": {
+      "visible": true,
+      "frameEvent": null,
+      "name": "Node",
+      "classname": "Node"
+    },
+    "children": [
+      {
+        "options": {
+          "normalData": {
+            "resourceType": 1,
+            "path": "s284.png",
+            "plistFile": ""
+          },
+          "pressedData": {
+            "resourceType": 0
+          },
+          "disabledData": {
+            "resourceType": 1,
+            "path": "s14.png",
+            "plistFile": ""
+          },
+          "text": "",
+          "capInsetsWidth": 1.0,
+          "capInsetsHeight": 1.0,
+          "scale9Width": 100.0,
+          "scale9Height": 100.0,
+          "x": 268.0,
+          "y": 46.0,
+          "touchAble": true,
+          "visible": true,
+          "classType": "Button",
+          "width": 100.0,
+          "height": 100.0,
+          "positionPercentX": 0.558333337,
+          "positionPercentY": 0.14375,
+          "sizePercentX": 0.208333328,
+          "sizePercentY": 0.3125,
+          "useMergedTexture": true,
+          "actionTag": 725878656,
+          "tag": 123,
+          "name": "card_button_3",
+          "classname": "Button"
+        },
+        "children": [],
+        "classname": "Button"
+      },
+      {
+        "options": {
+          "normalData": {
+            "resourceType": 1,
+            "path": "s500.png",
+            "plistFile": ""
+          },
+          "pressedData": {
+            "resourceType": 0
+          },
+          "disabledData": {
+            "resourceType": 1,
+            "path": "s14.png",
+            "plistFile": ""
+          },
+          "text": "",
+          "capInsetsWidth": 1.0,
+          "capInsetsHeight": 1.0,
+          "scale9Width": 100.0,
+          "scale9Height": 100.0,
+          "x": 46.0,
+          "y": 43.0,
+          "touchAble": true,
+          "visible": true,
+          "classType": "Button",
+          "width": 100.0,
+          "height": 100.0,
+          "positionPercentX": 0.09583333,
+          "positionPercentY": 0.134375,
+          "sizePercentX": 0.208333328,
+          "sizePercentY": 0.3125,
+          "useMergedTexture": true,
+          "actionTag": 259208064,
+          "tag": 121,
+          "name": "card_button_1",
+          "classname": "Button"
+        },
+        "children": [],
+        "classname": "Button"
+      },
+      {
+        "options": {
+          "normalData": {
+            "resourceType": 1,
+            "path": "s52.png",
+            "plistFile": ""
+          },
+          "pressedData": {
+            "resourceType": 0
+          },
+          "disabledData": {
+            "resourceType": 1,
+            "path": "s14.png",
+            "plistFile": ""
+          },
+          "text": "",
+          "capInsetsWidth": 1.0,
+          "capInsetsHeight": 1.0,
+          "scale9Width": 100.0,
+          "scale9Height": 100.0,
+          "x": 158.0,
+          "y": 46.0,
+          "touchAble": true,
+          "visible": true,
+          "classType": "Button",
+          "width": 100.0,
+          "height": 100.0,
+          "positionPercentX": 0.329166681,
+          "positionPercentY": 0.14375,
+          "sizePercentX": 0.208333328,
+          "sizePercentY": 0.3125,
+          "useMergedTexture": true,
+          "actionTag": 743890973,
+          "tag": 122,
+          "name": "card_button_2",
+          "classname": "Button"
+        },
+        "children": [],
+        "classname": "Button"
+      },
+      {
+        "options": {
+          "textureData": {
+            "resourceType": 1,
+            "path": "GUI/loadingbar.png",
+            "plistFile": ""
+          },
+          "x": 55.0,
+          "y": 537.0,
+          "scaleX": 0.333747655,
+          "scaleY": 0.7529385,
+          "colorR": 240,
+          "colorG": 228,
+          "colorB": 228,
+          "visible": true,
+          "ZOrder": 1,
+          "classType": "LoadingBar",
+          "width": 350.0,
+          "height": 24.0,
+          "positionPercentX": 0.114583336,
+          "positionPercentY": 1.678125,
+          "sizePercentX": 0.7291667,
+          "sizePercentY": 0.075,
+          "actionTag": 689994245,
+          "tag": 111,
+          "ignoreSize": true,
+          "name": "hp_LoadingBar_1",
+          "classname": "LoadingBar"
+        },
+        "children": [],
+        "classname": "LoadingBar"
+      },
+      {
+        "options": {
+          "textureData": {
+            "resourceType": 1,
+            "path": "GUI/loadingbar.png",
+            "plistFile": ""
+          },
+          "x": 168.0,
+          "y": 538.0,
+          "scaleX": 0.2600094,
+          "scaleY": 0.686841249,
+          "colorR": 238,
+          "colorG": 226,
+          "colorB": 226,
+          "visible": true,
+          "ZOrder": 1,
+          "classType": "LoadingBar",
+          "width": 350.0,
+          "height": 24.0,
+          "positionPercentX": 0.35,
+          "positionPercentY": 1.68125,
+          "sizePercentX": 0.7291667,
+          "sizePercentY": 0.075,
+          "actionTag": 160068649,
+          "tag": 112,
+          "ignoreSize": true,
+          "name": "hp_LoadingBar_2",
+          "classname": "LoadingBar"
+        },
+        "children": [],
+        "classname": "LoadingBar"
+      },
+      {
+        "options": {
+          "textureData": {
+            "resourceType": 1,
+            "path": "GUI/loadingbar.png",
+            "plistFile": ""
+          },
+          "x": 281.0,
+          "y": 539.0,
+          "scaleX": 0.30134362,
+          "scaleY": 0.6225936,
+          "rotation": -0.007965468,
+          "colorR": 252,
+          "colorG": 236,
+          "colorB": 236,
+          "visible": true,
+          "ZOrder": 1,
+          "classType": "LoadingBar",
+          "width": 350.0,
+          "height": 24.0,
+          "positionPercentX": 0.5854167,
+          "positionPercentY": 1.684375,
+          "sizePercentX": 0.7291667,
+          "sizePercentY": 0.075,
+          "actionTag": 102688551,
+          "tag": 113,
+          "ignoreSize": true,
+          "name": "hp_LoadingBar_3",
+          "classname": "LoadingBar"
+        },
+        "children": [],
+        "classname": "LoadingBar"
+      },
+      {
+        "options": {
+          "fileNameData": {
+            "resourceType": 1,
+            "path": "dialogue_portrait_44.png",
+            "plistFile": ""
+          },
+          "scale9Width": 487.0,
+          "scale9Height": 377.0,
+          "x": 55.0,
+          "y": 594.0,
+          "scaleX": 0.218243212,
+          "scaleY": 0.25523147,
+          "visible": true,
+          "classType": "ImageView",
+          "width": 487.0,
+          "height": 377.0,
+          "positionPercentX": 0.114583336,
+          "positionPercentY": 1.85625,
+          "sizePercentX": 0.166666672,
+          "sizePercentY": 0.25,
+          "useMergedTexture": true,
+          "actionTag": 265467273,
+          "tag": 101,
+          "ignoreSize": true,
+          "name": "HeroHead_1",
+          "classname": "ImageView"
+        },
+        "children": [],
+        "classname": "ImageView"
+      },
+      {
+        "options": {
+          "fileNameData": {
+            "resourceType": 1,
+            "path": "dialogue_portrait_19.png",
+            "plistFile": ""
+          },
+          "scale9Width": 336.0,
+          "scale9Height": 295.0,
+          "x": 170.0,
+          "y": 594.0,
+          "scaleX": 0.3,
+          "scaleY": 0.3,
+          "visible": true,
+          "classType": "ImageView",
+          "width": 336.0,
+          "height": 295.0,
+          "positionPercentX": 0.354166657,
+          "positionPercentY": 1.85625,
+          "sizePercentX": 0.166666672,
+          "sizePercentY": 0.25,
+          "useMergedTexture": true,
+          "actionTag": 718359385,
+          "tag": 102,
+          "ignoreSize": true,
+          "name": "HeroHead_2",
+          "classname": "ImageView"
+        },
+        "children": [],
+        "classname": "ImageView"
+      },
+      {
+        "options": {
+          "fileNameData": {
+            "resourceType": 1,
+            "path": "dialogue_portrait_45.png",
+            "plistFile": ""
+          },
+          "scale9Width": 419.0,
+          "scale9Height": 377.0,
+          "x": 280.0,
+          "y": 595.0,
+          "scaleX": 0.23,
+          "scaleY": 0.24,
+          "visible": true,
+          "classType": "ImageView",
+          "width": 419.0,
+          "height": 377.0,
+          "positionPercentX": 0.5833333,
+          "positionPercentY": 1.859375,
+          "sizePercentX": 0.166666672,
+          "sizePercentY": 0.25,
+          "useMergedTexture": true,
+          "actionTag": 845525825,
+          "tag": 103,
+          "ignoreSize": true,
+          "name": "HeroHead_3",
+          "classname": "ImageView"
+        },
+        "children": [],
+        "classname": "ImageView"
+      },
+      {
+        "options": {
+          "fontSize": 32,
+          "text": "怒气值",
+          "x": 692.0,
+          "y": 25.0,
+          "colorR": 9,
+          "colorG": 189,
+          "colorB": 28,
+          "visible": true,
+          "classType": "Label",
+          "width": 96.0,
+          "height": 37.0,
+          "positionPercentX": 1.44166672,
+          "positionPercentY": 0.078125,
+          "sizePercentX": 0.189583331,
+          "sizePercentY": 0.071875,
+          "useMergedTexture": true,
+          "actionTag": 373346469,
+          "tag": 9,
+          "ignoreSize": true,
+          "name": "Label_8",
+          "classname": "Label"
+        },
+        "children": [],
+        "classname": "Label"
+      },
+      {
+        "options": {
+          "charMapFileData": {
+            "resourceType": 0,
+            "path": "GUI/labelatlasimg.png",
+            "plistFile": ""
+          },
+          "startCharMap": "0",
+          "x": 857.0,
+          "y": 28.0,
+          "colorR": 132,
+          "colorG": 207,
+          "colorB": 16,
+          "visible": true,
+          "classType": "LabelAtlas",
+          "width": 240.0,
+          "height": 32.0,
+          "positionPercentX": 1.78541672,
+          "positionPercentY": 0.0875,
+          "sizePercentX": 0.5,
+          "sizePercentY": 0.1,
+          "actionTag": 256786864,
+          "tag": 10,
+          "ignoreSize": true,
+          "name": "rage_Label",
+          "classname": "LabelAtlas"
+        },
+        "children": [],
+        "classname": "LabelAtlas"
+      },
+      {
+        "options": {
+          "fileNameData": {
+            "resourceType": 1,
+            "path": "red.png",
+            "plistFile": ""
+          },
+          "scale9Width": 240.0,
+          "scale9Height": 180.0,
+          "x": 282.0,
+          "y": 539.0,
+          "scaleX": 0.440035224,
+          "scaleY": 0.09065315,
+          "colorR": 238,
+          "colorG": 20,
+          "colorB": 20,
+          "visible": true,
+          "classType": "ImageView",
+          "width": 240.0,
+          "height": 180.0,
+          "positionPercentX": 0.5875,
+          "positionPercentY": 1.684375,
+          "sizePercentX": 0.166666672,
+          "sizePercentY": 0.25,
+          "useMergedTexture": true,
+          "actionTag": 990666733,
+          "tag": 135,
+          "ignoreSize": true,
+          "name": "ImageView_14",
+          "classname": "ImageView"
+        },
+        "children": [],
+        "classname": "ImageView"
+      },
+      {
+        "options": {
+          "fileNameData": {
+            "resourceType": 1,
+            "path": "red.png",
+            "plistFile": ""
+          },
+          "scale9Width": 240.0,
+          "scale9Height": 180.0,
+          "x": 56.0,
+          "y": 535.0,
+          "scaleX": 0.483109564,
+          "scaleY": 0.0715089962,
+          "colorR": 238,
+          "colorG": 20,
+          "colorB": 20,
+          "visible": true,
+          "classType": "ImageView",
+          "width": 240.0,
+          "height": 180.0,
+          "positionPercentX": 0.116666667,
+          "positionPercentY": 1.671875,
+          "sizePercentX": 0.166666672,
+          "sizePercentY": 0.25,
+          "useMergedTexture": true,
+          "actionTag": 652912528,
+          "tag": 136,
+          "ignoreSize": true,
+          "name": "ImageView_15",
+          "classname": "ImageView"
+        },
+        "children": [],
+        "classname": "ImageView"
+      },
+      {
+        "options": {
+          "fileNameData": {
+            "resourceType": 1,
+            "path": "red.png",
+            "plistFile": ""
+          },
+          "scale9Width": 240.0,
+          "scale9Height": 180.0,
+          "x": 169.0,
+          "y": 536.0,
+          "scaleX": 0.382649,
+          "scaleY": 0.0907769,
+          "rotation": -0.185031623,
+          "colorR": 238,
+          "colorG": 20,
+          "colorB": 20,
+          "visible": true,
+          "classType": "ImageView",
+          "width": 240.0,
+          "height": 180.0,
+          "positionPercentX": 0.352083325,
+          "positionPercentY": 1.675,
+          "sizePercentX": 0.166666672,
+          "sizePercentY": 0.25,
+          "useMergedTexture": true,
+          "actionTag": 1000376330,
+          "tag": 137,
+          "ignoreSize": true,
+          "name": "ImageView_16",
+          "classname": "ImageView"
+        },
+        "children": [],
+        "classname": "ImageView"
+      }
+    ],
+    "classname": "Node"
+  },
+  "action": {
+    "speed": 1.0,
+    "timelines": []
+  }
+}
