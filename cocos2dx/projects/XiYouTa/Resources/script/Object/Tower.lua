@@ -82,6 +82,7 @@ function Tower:win()
 		self.createSoldier_action = nil
 	end
 	self.ccTowerSprite:setColor(ccc3(0,0,255))
+    StreetLayer.getInstance():FightLose()
 end
 
 function Tower:getSprite()

@@ -209,6 +209,19 @@ function StreetLayer:initHeroButton()
         self.rage_Label = tolua.cast(self.rage_Label,"LabelAtlas")
         print("rage_Label",tolua.type(self.rage_Label))
         self.rage_Label:setStringValue("0")
+        
+        local widgt = tolua.cast(self.uiFightLayer,"Widget")
+        local back_btn = UIHelper:seekWidgetByTag(widgt,138)
+        self.back_button = tolua.cast(back_btn,"Button")
+        local function touchEvent(sender,eventType)
+            if eventType == ccs.TouchEventType.began then
+            elseif eventType == ccs.TouchEventType.moved then
+            elseif eventType == ccs.TouchEventType.ended then
+                CCDirector:sharedDirector():replaceScene(MainLayer:scene())
+            end
+        end
+        self.back_button:addTouchEventListener(touchEvent)
+        self.back_button:setVisible(false)
     --end
 end
 
@@ -274,3 +287,9 @@ function StreetLayer:createSoldier()
         EventManager.getInstance():pushEvent(event)
     end
 end
+
+
+function StreetLayer:FightLose()
+    self.back_button:setVisible(true)
+end
+

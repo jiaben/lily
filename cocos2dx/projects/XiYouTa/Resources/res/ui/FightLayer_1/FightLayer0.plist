@@ -110,9 +110,9 @@
 				<key>originalHeight</key>
 				<integer>377</integer>
 				<key>x</key>
-				<integer>0</integer>
+				<integer>667</integer>
 				<key>y</key>
-				<integer>79</integer>
+				<integer>0</integer>
 				<key>offsetX</key>
 				<real>0</real>
 				<key>offsetY</key>
@@ -129,9 +129,9 @@
 				<key>originalHeight</key>
 				<integer>295</integer>
 				<key>x</key>
-				<integer>488</integer>
+				<integer>1155</integer>
 				<key>y</key>
-				<integer>79</integer>
+				<integer>0</integer>
 				<key>offsetX</key>
 				<real>0</real>
 				<key>offsetY</key>
@@ -148,9 +148,9 @@
 				<key>originalHeight</key>
 				<integer>377</integer>
 				<key>x</key>
-				<integer>0</integer>
+				<integer>1492</integer>
 				<key>y</key>
-				<integer>457</integer>
+				<integer>0</integer>
 				<key>offsetX</key>
 				<real>0</real>
 				<key>offsetY</key>
@@ -167,9 +167,28 @@
 				<key>originalHeight</key>
 				<integer>180</integer>
 				<key>x</key>
-				<integer>420</integer>
+				<integer>0</integer>
 				<key>y</key>
-				<integer>457</integer>
+				<integer>378</integer>
+				<key>offsetX</key>
+				<real>0</real>
+				<key>offsetY</key>
+				<real>0</real>
+			</dict>
+			<key>backbt.png</key>
+			<dict>
+				<key>width</key>
+				<integer>74</integer>
+				<key>height</key>
+				<integer>75</integer>
+				<key>originalWidth</key>
+				<integer>74</integer>
+				<key>originalHeight</key>
+				<integer>75</integer>
+				<key>x</key>
+				<integer>241</integer>
+				<key>y</key>
+				<integer>378</integer>
 				<key>offsetX</key>
 				<real>0</real>
 				<key>offsetY</key>
@@ -185,12 +204,12 @@
 			<key>realTextureFileName</key>
 			<string>FightLayer0.png</string>
 			<key>size</key>
-			<string>{1024,1024}</string>
+			<string>{2048,1024}</string>
 		</dict>
 		<key>texture</key>
 		<dict>
 			<key>width</key>
-			<integer>1024</integer>
+			<integer>2048</integer>
 			<key>height</key>
 			<integer>1024</integer>
 		</dict>

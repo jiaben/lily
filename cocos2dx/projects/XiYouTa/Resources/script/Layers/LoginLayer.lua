@@ -1,4 +1,4 @@
-require "Layers.StreetLayer"
+require "Layers.MainLayer"
 
 function createLoginLayer()
 	local scene = CCScene:create()
@@ -11,7 +11,7 @@ function createLoginLayer()
         if eventType == ccs.TouchEventType.began then
         elseif eventType == ccs.TouchEventType.moved then
         elseif eventType == ccs.TouchEventType.ended then
-            CCDirector:sharedDirector():replaceScene(StreetLayer:scene())
+            CCDirector:sharedDirector():replaceScene(MainLayer:scene())
         elseif eventType == ccs.TouchEventType.canceled then
         end
     end

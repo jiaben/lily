@@ -486,6 +486,47 @@
         },
         "children": [],
         "classname": "ImageView"
+      },
+      {
+        "options": {
+          "normalData": {
+            "resourceType": 1,
+            "path": "backbt.png",
+            "plistFile": ""
+          },
+          "pressedData": {
+            "resourceType": 0
+          },
+          "disabledData": {
+            "resourceType": 0
+          },
+          "text": "",
+          "capInsetsWidth": 1.0,
+          "capInsetsHeight": 1.0,
+          "scale9Width": 74.0,
+          "scale9Height": 75.0,
+          "x": 874.0,
+          "y": 310.0,
+          "scaleX": 1.25010943,
+          "scaleY": 1.24677467,
+          "touchAble": true,
+          "visible": true,
+          "classType": "Button",
+          "width": 74.0,
+          "height": 75.0,
+          "positionPercentX": 1.82083333,
+          "positionPercentY": 0.96875,
+          "sizePercentX": 0.214583337,
+          "sizePercentY": 0.125,
+          "useMergedTexture": true,
+          "actionTag": 878119869,
+          "tag": 138,
+          "ignoreSize": true,
+          "name": "Button_16",
+          "classname": "Button"
+        },
+        "children": [],
+        "classname": "Button"
       }
     ],
     "classname": "Node"

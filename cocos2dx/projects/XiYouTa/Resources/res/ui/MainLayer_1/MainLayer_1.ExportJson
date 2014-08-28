@@ -1,0 +1,97 @@
+{
+  "version": "1.0.0.0",
+  "designWidth": 960,
+  "designHeight": 640,
+  "dataScale": 1.0,
+  "textures": [
+    "MainLayer0.plist"
+  ],
+  "texturesPng": [
+    "MainLayer0.png"
+  ],
+  "nodeTree": {
+    "options": {
+      "visible": true,
+      "frameEvent": null,
+      "name": "Node",
+      "classname": "Node"
+    },
+    "children": [
+      {
+        "options": {
+          "fileNameData": {
+            "resourceType": 1,
+            "path": "main_bg_grass_left.png",
+            "plistFile": ""
+          },
+          "scale9Width": 1189.0,
+          "scale9Height": 615.0,
+          "x": 378.0,
+          "y": 314.0,
+          "visible": true,
+          "classType": "ImageView",
+          "width": 1189.0,
+          "height": 615.0,
+          "positionPercentX": 0.7875,
+          "positionPercentY": 0.98125,
+          "sizePercentX": 0.166666672,
+          "sizePercentY": 0.25,
+          "useMergedTexture": true,
+          "actionTag": 532786999,
+          "tag": 2,
+          "ignoreSize": true,
+          "name": "Image_BG",
+          "classname": "ImageView"
+        },
+        "children": [],
+        "classname": "ImageView"
+      },
+      {
+        "options": {
+          "normalData": {
+            "resourceType": 1,
+            "path": "todolist_icon_pve.png",
+            "plistFile": ""
+          },
+          "pressedData": {
+            "resourceType": 0
+          },
+          "disabledData": {
+            "resourceType": 0
+          },
+          "text": "",
+          "capInsetsWidth": 1.0,
+          "capInsetsHeight": 1.0,
+          "scale9Width": 95.0,
+          "scale9Height": 97.0,
+          "x": 754.0,
+          "y": 131.0,
+          "scaleX": 1.57082,
+          "scaleY": 1.39932132,
+          "touchAble": true,
+          "visible": true,
+          "classType": "Button",
+          "width": 95.0,
+          "height": 97.0,
+          "positionPercentX": 1.57083333,
+          "positionPercentY": 0.409375,
+          "sizePercentX": 0.214583337,
+          "sizePercentY": 0.125,
+          "useMergedTexture": true,
+          "actionTag": 692567237,
+          "tag": 300,
+          "ignoreSize": true,
+          "name": "Button_tollgate",
+          "classname": "Button"
+        },
+        "children": [],
+        "classname": "Button"
+      }
+    ],
+    "classname": "Node"
+  },
+  "action": {
+    "speed": 1.0,
+    "timelines": []
+  }
+}
