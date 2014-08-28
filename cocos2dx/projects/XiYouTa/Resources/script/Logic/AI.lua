@@ -240,7 +240,6 @@ function AI:removeDeadObject(hero)
     for i,v in pairs(self.tbl_deadObj) do
 		if hero == v then
 			table.remove(self.tbl_deadObj, i)
-            print("remove dead obj*****")
             break
 		end
 	end

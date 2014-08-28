@@ -164,7 +164,7 @@ function StreetLayer:initHeroButton()
                 if eventType == ccs.TouchEventType.began then
                 elseif eventType == ccs.TouchEventType.moved then
                 elseif eventType == ccs.TouchEventType.ended then
-                    print("card btn clk :::",j)
+                    --print("card btn clk :::",j)
                     local rage = g_FightMgr:getRage()
                     local eff
                     if j == 1 and rage > 200 then
@@ -176,10 +176,15 @@ function StreetLayer:initHeroButton()
                     end
                     if eff then
                         local ret = eff:doEffect()
-                        if ret == true and self.card_action[j] then
-                            self.tbl_cardbtn[j]:stopAllActions()
-                            self.tbl_cardbtn[j]:setPosition(ccp(self.card_action[j][2],self.card_action[j][3]))
-                            self.card_action[j] = nil
+                        if ret == true then
+                            for n = 1, 3 do
+                                if self.card_action[n] then
+                                    self.tbl_cardbtn[n]:stopAllActions()
+                                    self.tbl_cardbtn[n]:setPosition(ccp(self.card_action[n][2],self.card_action[n][3]))
+                                    --self.card_action[n] = nil
+                                end
+                            end
+                            self.card_action = {}
                         end
                     end
                 elseif eventType == ccs.TouchEventType.canceled then
@@ -218,15 +223,15 @@ function StreetLayer:updateRage()
     self.rage_Label:setStringValue(rage)
     if rage >= 200 and self.card_action[1] == nil then
         --self.tbl_cardbtn[1]:setEnabled(true)
-        self.card_action[1] = {self.tbl_cardbtn[1]:runAction(CCJumpBy:create(20.0,ccp(0,0),20,60)),self.tbl_cardbtn[1]:getPosition()}
+        self.card_action[1] = {self.tbl_cardbtn[1]:runAction(CCJumpBy:create(5.0,ccp(0,0),20,15)),self.tbl_cardbtn[1]:getPosition()}
     end
     if rage >= 100 and self.card_action[2] == nil then
-        self.card_action[2] = {self.tbl_cardbtn[2]:runAction(CCJumpBy:create(20.0,ccp(0,0),20,60)),self.tbl_cardbtn[2]:getPosition()}
+        self.card_action[2] = {self.tbl_cardbtn[2]:runAction(CCJumpBy:create(5.0,ccp(0,0),20,15)),self.tbl_cardbtn[2]:getPosition()}
         --self.tbl_cardbtn[2]:setEnabled(true)
     end
     if rage >= 50  and self.card_action[3] == nil then
         --self.tbl_cardbtn[3]:setEnabled(true)
-        self.card_action[3] = {self.tbl_cardbtn[3]:runAction(CCJumpBy:create(20.0,ccp(0,0),20,60)),self.tbl_cardbtn[3]:getPosition()}
+        self.card_action[3] = {self.tbl_cardbtn[3]:runAction(CCJumpBy:create(5.0,ccp(0,0),20,15)),self.tbl_cardbtn[3]:getPosition()}
     end
 end
 

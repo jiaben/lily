@@ -43,5 +43,8 @@ end
 
 function EnemySoldier:onDie()
     AI.getInstance():removeEnemy(self)
+end
+
+function EnemySoldier:onRelease()
     AI.getInstance():removeEnemySoldier(self)
 end

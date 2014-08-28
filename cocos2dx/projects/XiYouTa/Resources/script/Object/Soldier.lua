@@ -24,7 +24,7 @@ end
 function Soldier:calculate()
     local tower =  AI.getInstance():getCurrentTower()
     if tower then
-        tower:hurt(50)
+        tower:hurt(5)
     else
         self.armature:getAnimation():play("stand")
         return

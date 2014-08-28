@@ -16,7 +16,6 @@ function CardEffect:ctor(name,cost,effect)
 end
 
 function CardEffect:doEffect()
-    print("do effect .....")
     if g_FightMgr:getRage() < self.cost then
         return false
     end
@@ -34,19 +33,29 @@ end
 
 function CardEffect:addHeroAttack()
     for i,v in pairs(AI.getInstance().tbl_Hero) do
+        local buff = v:getSprite():getChildByTag(1001)
+        buff = tolua.cast(buff,"CCSprite")
+        if buff then
+            buff:removeFromParentAndCleanup(true)
+        end
 		v:addMultiAttack(0.5)
-        local buff = CCSprite:create("res/skill_eff/eff_tile_TH_atk2/sheet_PList.Dir/light_buff_1.png")
+        buff = CCSprite:create("res/skill_eff/eff_tile_TH_atk2/sheet_PList.Dir/light_buff_1.png")
         buff:setPosition(ccp(0,400))
-        v:getSprite():addChild(buff)
+        v:getSprite():addChild(buff,1,1001)
+        local sequence = CCSequence:createWithTwoActions(CCScaleTo:create(0.2,1.5), CCScaleTo:create(0.2,1.0))
+        local action = CCRepeatForever:create(sequence)
+        buff:runAction(action)
 	end
 end
 
 function CardEffect:aoeHurt()
-    for i,v in pairs(AI.getInstance().tbl_EnemySoldier) do
+    local tbl_enemy = AI.getInstance().tbl_EnemySoldier
+    for i,v in pairs(tbl_enemy) do
         v:hurt(300)
         local sp = CCSprite:create("res/skill_eff/eff_impact_Zeus_ult/sheet_PList.Dir/s_1.png")
         --local x,y = v.getSprite().ccSprite:getPosition()
         sp:setPosition(ccp(0,0))
+        sp:setScale(2.0)
         v:getSprite():addChild(sp)
     
         local animFrames = CCArray:createWithCapacity(4)
@@ -57,7 +66,6 @@ function CardEffect:aoeHurt()
         end
         local animation = CCAnimation:createWithSpriteFrames(animFrames, 0.1)
         local function skilleff_callback()
-            print("skill eff end")
             sp:removeFromParentAndCleanup(true)
         end
         local callfunc = CCCallFunc:create(skilleff_callback)

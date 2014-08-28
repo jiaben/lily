@@ -205,6 +205,10 @@ function Hero:onDieCallBack()
     local event = DeadEvent.new(self)
     EventManager.getInstance():pushEvent(event)
 --  self.attackEvent:callback()
+    self:onRelease()
+end
+
+function Hero:onRelease()
 end
 
 function Hero:dead()
@@ -223,8 +227,11 @@ end
 
 function Hero:attack()
     if self.alive == false or self.isOccup then
-        print(" obj dead")
+        --print(" obj dead")
         --self.attackEvent:callback()
+        return
+    end
+    if AI.getInstance():getState() ~= AI.state.attack then
         return
     end
 	if self.fight_begintime == 0 then
@@ -232,15 +239,17 @@ function Hero:attack()
     end
 	local n = math.floor(math.random()*2)+1
     n = 1
-    local function callback_move(armature,movementType,movementID)
+    local function callback_attack(armature,movementType,movementID)
 		if movementType == ccs.MovementEventType.COMPLETE then
 			armature:getAnimation():setMovementEventCallFunc()
 			self.armature:getAnimation():play("stand")
             self.attacking = false
-            self:nextAttack()
+            if AI.getInstance():getState() == AI.state.attack then
+                self:nextAttack()
+            end
 		end
 	end
-    self.armature:getAnimation():setMovementEventCallFunc(callback_move)
+    self.armature:getAnimation():setMovementEventCallFunc(callback_attack)
 	self.armature:getAnimation():play(string.format("attack%02d",n),-1,-1,0)
     self.attacking = true
     local fightTime = os.time() - self.fight_begintime
@@ -261,10 +270,12 @@ function Hero:doSkillAttack()
         local tx,ty
 		if enemy then
 			enemy:hurt(self.skill_hurt*self.multi_attack)
-            tx,ty = enemy:getPosition()
+            local point = enemy:getSprite():convertToWorldSpace(ccp(0,0))
+            tx,ty = point.x,point.y
 		elseif tower:isAlive() then
 			tower:hurt(self.skill_hurt*self.multi_attack)
-            tx,ty = tower:getPosition()
+            local point = tower:getSprite():convertToWorldSpace(ccp(0,0))
+            tx,ty = point.x,point.y
 		else
 			self.armature:getAnimation():play("stand")
 			return
@@ -290,11 +301,10 @@ function Hero:doSkillAttack()
         sp:runAction(CCAnimate:create(animation))
 
         local function skilleff_callback()
-            print("skill eff end")
             sp:removeFromParentAndCleanup(true)
         end
         local callfunc = CCCallFunc:create(skilleff_callback)
-        local sequence = CCSequence:createWithTwoActions(CCMoveTo:create(1.0,ccp(tx,ty)), callfunc)
+        local sequence = CCSequence:createWithTwoActions(CCMoveTo:create(0.5,ccp(tx+100,ty)), callfunc)
         sp:runAction(sequence)
     end
 
@@ -313,9 +323,9 @@ function Hero:calculate()
     local enemy = AI.getInstance():getEnemy()
     local tower =  AI.getInstance():getCurrentTower()
     if enemy then
-        enemy:hurt(20*self.multi_attack)
+        enemy:hurt(10*self.multi_attack)
     elseif tower:isAlive() then
-        tower:hurt(20*self.multi_attack)
+        tower:hurt(10*self.multi_attack)
     else
         self.armature:getAnimation():play("stand")
         return
@@ -339,5 +349,8 @@ function Hero:doSkill(skillname)
 end
 
 function Hero:win()
-	self.armature:getAnimation():play("shengli")
+    if self.heroType == "xiaozuanfeng" then
+        print("winwinwin")
+        self.armature:getAnimation():play("celebrate")
+    end
 end

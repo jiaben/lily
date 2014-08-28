@@ -127,7 +127,7 @@ function Tower:createSoldier()
             local index = math.ceil(math.random()*#(soldier_tbl))
             local soldier_type = soldier_tbl[index]
 			local bp = EnemySoldier.new(soldier_type)
-			bp:setMP(100)
+			bp:setMP(350)
 			bp.isEnemy = self.isEnemy
 			bp:stand()
 			parent:addChild(bp:getSprite(),2)
