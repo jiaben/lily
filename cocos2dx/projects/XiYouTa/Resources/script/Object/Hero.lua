@@ -34,7 +34,7 @@ function Hero:ctor(heroType)
 
 	local szHero = self.ccSprite:getContentSize()
 	self.ccSprite:addChild(self.progressBg)
-	self.progressBg:setPosition(ccp(0,300))
+	self.progressBg:setPosition(ccp(0,360))
 	self.label_name = CCLabelTTF:create("", "Arial", 40)
 	self.label_name:setString(heroType)
 	self.label_name:setPosition(ccp(100,50))
@@ -349,8 +349,11 @@ function Hero:doSkill(skillname)
 end
 
 function Hero:win()
-    if self.heroType == "xiaozuanfeng" then
+    if self.heroType == "xiaozuanfeng" 
+        or self.heroType == "honghaier" then
         print("winwinwin")
         self.armature:getAnimation():play("celebrate")
     end
+    self.progress:setVisible(false)
+    self.progressBg:setVisible(false)
 end

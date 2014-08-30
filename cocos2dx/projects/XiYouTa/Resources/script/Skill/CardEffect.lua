@@ -40,7 +40,7 @@ function CardEffect:addHeroAttack()
         end
 		v:addMultiAttack(0.5)
         buff = CCSprite:create("res/skill_eff/eff_tile_TH_atk2/sheet_PList.Dir/light_buff_1.png")
-        buff:setPosition(ccp(0,400))
+        buff:setPosition(ccp(0,460))
         v:getSprite():addChild(buff,1,1001)
         local sequence = CCSequence:createWithTwoActions(CCScaleTo:create(0.2,1.5), CCScaleTo:create(0.2,1.0))
         local action = CCRepeatForever:create(sequence)

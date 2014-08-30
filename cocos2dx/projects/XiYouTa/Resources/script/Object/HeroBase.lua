@@ -13,7 +13,7 @@ HeroBase.tblHeroMetaData = {}
         [{},{}]
  --]]
 
-g_tblZhujv = {"Panda","snk","xiaozuanfeng"}
+g_tblZhujv = {"Panda","snk","xiaozuanfeng","honghaier"}
 function HeroBase:ctor()
     self.hero = {}
     for i, v in pairs(g_tblZhujv) do
